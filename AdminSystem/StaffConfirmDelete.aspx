@@ -8,7 +8,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        Staff Can delete and change information
+            <strong>Staff Can delete and change information</strong>
         <div>
         </div>
     </form>
