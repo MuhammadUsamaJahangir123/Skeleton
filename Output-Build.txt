@@ -1,3 +1,5 @@
-﻿Build started at 16:17...
-========== Build: 0 succeeded, 0 failed, 2 up-to-date, 0 skipped ==========
-========== Build completed at 16:17 and took 00.352 seconds ==========
+﻿Build started at 12:29...
+1>------ Build started: Project: TestingStaff, Configuration: Debug Any CPU ------
+1>  TestingStaff -> H:\Second Year KD\Agile Dev Team Proj\CLONE do DATABASE\Testing1\bin\Debug\Testing1.dll
+========== Build: 1 succeeded, 0 failed, 1 up-to-date, 0 skipped ==========
+========== Build completed at 12:29 and took 00.746 seconds ==========
