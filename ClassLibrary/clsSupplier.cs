@@ -7,7 +7,7 @@ namespace ClassLibrary
         public bool Active { get; set; }
         public DateTime DateAdded { get; set; }
         public int SupplierId { get; set; }
-        public int ContactInfo { get; set; }
-        public int SupplierName { get; set; }
+        public string ContactInfo { get; set; }
+        public string SupplierName { get; set; }
     }
 }
