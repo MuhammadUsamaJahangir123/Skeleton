@@ -42,7 +42,7 @@ namespace Testing4
         public void ContactInfoPropertyOK()
         {
             clsSupplier ASupplier = new clsSupplier();
-            Int32 TestData = 1;
+            String TestData = "GURJ@GMAIL.COM";
             ASupplier.ContactInfo = TestData;
             Assert.AreEqual(ASupplier.ContactInfo, TestData);
         }
@@ -51,7 +51,7 @@ namespace Testing4
         public void SupplierNamePropertyOK()
         {
             clsSupplier ASupplier = new clsSupplier();
-            Int32 TestData = 1;
+            String TestData = "GURJOT";
             ASupplier.SupplierName = TestData;
             Assert.AreEqual(ASupplier.SupplierName, TestData);
         }
