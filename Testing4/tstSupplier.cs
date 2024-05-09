@@ -56,6 +56,21 @@ namespace Testing4
             Assert.AreEqual(ASupplier.SupplierName, TestData);
         }
 
+        [TestMethod]
+        public void FindMethod()
+        {
+            //create new instance
+            clsSupplier ASupplier = new clsSupplier();
+            //create boolean variable to store results of validation
+            Boolean Found = false;
+            //Create some test data to use with the method
+            Int32 SupplierId = 21;
+            //invoke the method
+            Found = ASupplier.Find(SupplierId);
+            //test to see if the results is true
+            Assert.IsTrue(Found);
+                    
+        }
 
     }
 }
