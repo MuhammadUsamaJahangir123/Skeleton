@@ -9,5 +9,10 @@ namespace ClassLibrary
         public int SupplierId { get; set; }
         public string ContactInfo { get; set; }
         public string SupplierName { get; set; }
+
+        public bool Find(int supplierId)
+        {
+            return true;
+        }
     }
 }
