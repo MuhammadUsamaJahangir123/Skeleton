@@ -17,84 +17,95 @@ namespace Testing2
         }
         /***************Property OK Tests ****************/
         [TestMethod]
-        public void SubscribePropertyOK()
+        public void subscribePropertyOK()
         {
             //create an instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign the data to the property
-            AnCustomer.Subscribe = TestData;
+            AnCustomer.subscribe = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.Subscribe, TestData);
+            Assert.AreEqual(AnCustomer.subscribe, TestData);
         }
         [TestMethod]
-        public void DateJoinedPropertyOK()
+        public void DatejoinedPropertyOK()
         {
 
             clsCustomer AnCustomer = new clsCustomer();
 
             DateTime TestData = DateTime.Now.Date;
 
-            AnCustomer.DateJoined = TestData;
+            AnCustomer.joinedDate = TestData;
 
-            Assert.AreEqual(AnCustomer.DateJoined, TestData);
+            Assert.AreEqual(AnCustomer.joinedDate, TestData);
         }
         [TestMethod]
-        public void FirstNamePropertyOK()
+        public void firstNamePropertyOK()
         {
 
             clsCustomer AnCustomer = new clsCustomer();
 
             string TestData = "Jonny";
 
-            AnCustomer.FirstName = TestData;
+            AnCustomer.firstName = TestData;
 
-            Assert.AreEqual(AnCustomer.FirstName, TestData);
+            Assert.AreEqual(AnCustomer.firstName, TestData);
         }
         [TestMethod]
-        public void LastNamePropertyOK()
+        public void lastNamePropertyOK()
         {
 
             clsCustomer AnCustomer = new clsCustomer();
 
             string TestData = "Lenon";
 
-            AnCustomer.LastName = TestData;
+            AnCustomer.lastName = TestData;
 
-            Assert.AreEqual(AnCustomer.LastName, TestData);
+            Assert.AreEqual(AnCustomer.lastName, TestData);
         }
 
         [TestMethod]
-        public void EmailPropertyOK()
+        public void emailPropertyOK()
         {
 
             clsCustomer AnCustomer = new clsCustomer();
 
             string TestData = "JonnyLenon@gmail.com";
 
-            AnCustomer.Email = TestData;
+            AnCustomer.email = TestData;
 
-            Assert.AreEqual(AnCustomer.Email, TestData);
+            Assert.AreEqual(AnCustomer.email, TestData);
         }
         [TestMethod]
-        public void CustomerIDPropertyOK()
+        public void customerIDPropertyOK()
         {
 
             clsCustomer AnCustomer = new clsCustomer();
 
-            Int32 TestData = 1;
+            Int32 TestData = 21;
 
-            AnCustomer.CustomerID = TestData;
+            AnCustomer.customerID = TestData;
 
-            Assert.AreEqual(AnCustomer.CustomerID, TestData);
+            Assert.AreEqual(AnCustomer.customerID, TestData);
         }
 
+        [TestMethod]
+        public void PhoneNoPropertyOK()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+
+            string TestData = "07404535912";
+
+            AnCustomer.PhoneNo = TestData;
+
+            Assert.AreEqual(AnCustomer.PhoneNo, TestData);
+
+        }
         //Practical 9 Find and Valid Methods
         /***************Find Method Test ****************/
 
         [TestMethod]
-
         public void FindMethodOK()
         {
             //create instance of the class we want to create 
@@ -102,14 +113,15 @@ namespace Testing2
             //create a Boolean varaible to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 customerID = 1;
             //invoke the method
-            Found = AnCustomer.Find(CustomerID);
+            Found = AnCustomer.Find(customerID);
             //Test to see if the results is ture
             Assert.IsTrue(Found);
         }
+    
         [TestMethod]
-        public void TestCustomerIDFound()
+        public void TestcustomerIDFound()
         {
             //Create instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
@@ -118,11 +130,11 @@ namespace Testing2
             //Create a boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //Create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 customerID = 1;
             //Invoke the method
-            Found = AnCustomer.Find(CustomerID);
+            Found = AnCustomer.Find(customerID);
             //Check the CustomerID
-            if (AnCustomer.CustomerID != 21)
+            if (AnCustomer.customerID != 1)
             {
                 OK = false;
             }
@@ -131,7 +143,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void TestJoinedDateFound()
+        public void TestjoinedDateFound()
         {
             //Create instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
@@ -140,18 +152,19 @@ namespace Testing2
             //Create a boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //Create some test data to use with the method
-            Int32 CustomerID = 21;
-            Found = AnCustomer.Find(CustomerID);
+            Int32 customerID = 1;
+            Found = AnCustomer.Find(customerID);
             //check the JoinedDate property
-            if (AnCustomer.DateJoined != Convert.ToDateTime("23/12/2022"))
+            if (AnCustomer.joinedDate != Convert.ToDateTime("18/01/2023"))
             {
                 OK = false;
             }
             //Test to see that the results is correct
             Assert.IsTrue(OK);
         }
+
         [TestMethod]
-        public void TestFirstNameFound()
+        public void TestfirstNameFound()
         {
             //Create instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
@@ -160,17 +173,17 @@ namespace Testing2
             //Create a boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //Create some test data to use with the method
-            Int32 CustomerID = 21;
-            Found = AnCustomer.Find(CustomerID);
+            Int32 customerID = 1;
+            Found = AnCustomer.Find(customerID);
             //Check the FirstName property
-            if (AnCustomer.FirstName != "Jonny")
+            if (AnCustomer.firstName != "Jonny")
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestLastNameFound()
+        public void TestlastNameFound()
         {
             //Create instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
@@ -179,10 +192,10 @@ namespace Testing2
             //Create a boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //Create some test data to use with the method
-            Int32 CustomerID = 21;
-            Found = AnCustomer.Find(CustomerID);
+            Int32 customerID = 1;
+            Found = AnCustomer.Find(customerID);
             //Check this LastName property
-            if (AnCustomer.LastName != "Lenon")
+            if (AnCustomer.lastName != "Lenon")
             {
                 OK = false;
             }
@@ -190,7 +203,7 @@ namespace Testing2
 
         }
         [TestMethod]
-        public void TestEmail()
+        public void TestemailFound()
         {
             //Create instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
@@ -199,17 +212,17 @@ namespace Testing2
             //Create a boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //Create some test data to use with the method
-            Int32 CustomerID = 21;
-            Found = AnCustomer.Find(CustomerID);
+            Int32 customerID = 1;
+            Found = AnCustomer.Find(customerID);
             //Checks the email
-            if (AnCustomer.Email != "JonnyLenon@gmail.com")
+            if (AnCustomer.email != "JonnyLenon@gmail.com")
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestSubscribe()
+        public void TestsubscribeFound()
         {
             //Create instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
@@ -218,16 +231,35 @@ namespace Testing2
             //Create a boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //Create some test data to use with the method
-            Int32 CustomerID = 21;
-            Found = AnCustomer.Find(CustomerID);
+            Int32 customerID = 1;
+            Found = AnCustomer.Find(customerID);
             //Checks the if boolean subscribe
-            if (AnCustomer.Subscribe != true)
+            if (AnCustomer.subscribe != true)
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
 
         }
+        [TestMethod]
+        public void TestPhoneNoFound()
+        {
+            //Create instance of the class we want to create
+            clsCustomer AnCustomer = new clsCustomer();
+            //Create a boolean variable to store the results of the search
+            Boolean Found = false;
+            //Create a boolean variable to record if the data is Ok (assume it is)
+            Boolean OK = true;
+            //Create some test data to use with the method
+            Int32 customerID = 1;
+            Found = AnCustomer.Find(customerID);
+            //Checks if the phone no is correct 1
+            if (AnCustomer.PhoneNo != "07404535912")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        } 
     }
 }
     
