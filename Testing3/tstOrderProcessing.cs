@@ -148,6 +148,96 @@ namespace Testing3
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
-       
+
+        [TestMethod]
+        public void TestStaffIdFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 StaffId = 15;
+            //invoke the method
+            Found = AnOrderProcessing.Find(StaffId);
+            //check the address id property
+            if (AnOrderProcessing.StaffID != 15)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderDateFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            DateTime OrderDate = DateTime.Parse("23/12/2022");
+            //invoke the method
+            Found = AnOrderProcessing.Find(OrderDate);
+            //check the date added property
+            if (AnOrderProcessing.OrderDate != OrderDate)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestShippingStatusFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Boolean ShippingStatus = true;
+            //invoke the method
+            Found = AnOrderProcessing.Find(ShippingStatus);
+            //check the active property
+            if (AnOrderProcessing.ShippingStatus != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestTotalAmountFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Decimal TotalAmount = 25;
+            //invoke the method
+            Found = AnOrderProcessing.Find(TotalAmount);
+            //check the active property
+            if (AnOrderProcessing.TotalAmount != 25)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
+
     }
 }
