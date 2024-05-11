@@ -86,38 +86,36 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int OrderId)
+        public bool Find(int orderId)
         {
-            
-            mOrderId = 21;
-            mCustomerId = 11;
-            mStaffId= 15;
-            mShippingStatus= true;
-            //always return true
-            return true;
-        }
-        public bool Find(DateTime orderDate)
-        {
-            mOrderDate = DateTime.Parse("23/12/2022");
-            //always return true
-            return true;
-        }
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the order id to search for
+            DB.AddParameter("@OrderId", orderId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblorders_FilterByOrderId");
+            //if one record is found(there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
 
-        public bool Find(Boolean ShippingStatus) 
-        {
-            mShippingStatus = true;
-            //always return true
-            return true;
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mShippingStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["ShippingStatus"]);
+                mTotalAmount = Convert.ToDecimal(DB.DataTable.Rows[0]["TotalAmount"]);
+
+                // return that everything worked ok
+                return true;
+            }
+            //if no record was found
+            else 
+            { 
+                //return false indicating there is a problem
+                return false;
+            }
         }
-
-        public bool Find(Decimal TotalAmount)
-        {
-            mTotalAmount = 25;
-            //always return true
-            return true;
-        }
-
-
+       
 
 
 
