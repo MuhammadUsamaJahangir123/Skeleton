@@ -97,9 +97,9 @@ namespace Testing3
             //create a boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderId = 4;
             //invoke the method
-            Found = AnOrderProcessing.Find(OrderID);
+            Found = AnOrderProcessing.Find(OrderId);
             //test to see if the result is true
             Assert.IsTrue(Found);
 
@@ -115,11 +115,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 4;
             //invoke the method
             Found = AnOrderProcessing.Find(OrderId);
             //check the address id property
-            if (AnOrderProcessing.OrderID != 21)
+            if (AnOrderProcessing.OrderID != 4)
             {
                 OK = false;
             }
@@ -137,9 +137,9 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerId = 11;
+            Int32 OrderId = 4;
             //invoke the method
-            Found = AnOrderProcessing.Find(CustomerId);
+            Found = AnOrderProcessing.Find(OrderId);
             //check the address id property
             if (AnOrderProcessing.CustomerID != 11)
             {
@@ -159,9 +159,9 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 15;
+            Int32 OrderId = 4;
             //invoke the method
-            Found = AnOrderProcessing.Find(StaffId);
+            Found = AnOrderProcessing.Find(OrderId);
             //check the address id property
             if (AnOrderProcessing.StaffID != 15)
             {
@@ -181,11 +181,11 @@ namespace Testing3
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            DateTime OrderDate = DateTime.Parse("23/12/2022");
+            Int32 OrderId = 4;
             //invoke the method
-            Found = AnOrderProcessing.Find(OrderDate);
+            Found = AnOrderProcessing.Find(OrderId);
             //check the date added property
-            if (AnOrderProcessing.OrderDate != OrderDate)
+            if (AnOrderProcessing.OrderDate != Convert.ToDateTime("23/12/2022"))
             {
                 OK = false;
             }
@@ -203,9 +203,9 @@ namespace Testing3
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Boolean ShippingStatus = true;
+            Int32 OrderId = 4;
             //invoke the method
-            Found = AnOrderProcessing.Find(ShippingStatus);
+            Found = AnOrderProcessing.Find(OrderId);
             //check the active property
             if (AnOrderProcessing.ShippingStatus != true)
             {
@@ -225,11 +225,11 @@ namespace Testing3
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Decimal TotalAmount = 25;
+            Int32 OrderId = 4;
             //invoke the method
-            Found = AnOrderProcessing.Find(TotalAmount);
+            Found = AnOrderProcessing.Find(OrderId);
             //check the active property
-            if (AnOrderProcessing.TotalAmount != 25)
+            if (AnOrderProcessing.TotalAmount != Convert.ToDecimal("25"))
             {
                 OK = false;
             }

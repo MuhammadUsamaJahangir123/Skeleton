@@ -11,7 +11,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+
 
     }
 
@@ -30,10 +30,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         //navigate to the view page
         Session["AnOrderProcessing"] = AnOrderProcessing;
-        
-        
-       
+
+
+
         Response.Redirect("OrderProcessingViewer.aspx");
-        
+
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address class
+        clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+        //create a variable to store the primary key
+        Int32 OrderId;
+        //create a varaible to store the results of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        OrderId = Convert.ToInt32(txtOrderId.Text);
+        //find the record 
+        Found = AnOrderProcessing.Find(OrderId);
+        //if found
+        if (Found == true)
+        {
+         
+        }
     }
 }
