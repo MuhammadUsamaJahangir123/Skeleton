@@ -6,11 +6,12 @@ namespace ClassLibrary
     {
         //private data member for the following property
         private Int32 mStaffID;
-        private DateTime mDateAdded;
+        private DateTime mJoinedDate;
         private string mFirstName;
         private string mLastName;
         private Boolean mAvailability;
         private string mEmail;
+        private string mPhoneNo;
 
 
         public bool Availability
@@ -26,17 +27,17 @@ namespace ClassLibrary
                 mAvailability = value;
             }
         }
-        public DateTime DateAdded
+        public DateTime JoinedDate
         {
             get
             {
                 //this line of code senda data out of the property
-                return mDateAdded;
+                return mJoinedDate;
             }
             set
             {
                 //this line of code allows data into the property
-                mDateAdded = value;
+                mJoinedDate = value;
             }
         }
         public Int32 StaffID
@@ -93,17 +94,50 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int staffID)
+        public string PhoneNo 
         {
-            //set the private data members to the test data value
-            mStaffID = 2;
-            mDateAdded = Convert.ToDateTime("23/06/2023");
-            mFirstName = "Max";
-            mLastName = "Verstappen";
-            mAvailability = true;
-            mEmail = "max_verst18@yahoo.com";
-            //always return true
-            return true;
+            get
+            {
+                //this line of code sends data out of the property
+                return mPhoneNo;
+            }
+            set
+            {
+                //this line of code allows data into the property
+                mPhoneNo = value;
+            }
+        }
+
+        public bool Find(int StaffID)
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the staff id to search for
+            DB.AddParameter("@StaffID", StaffID);
+            //execute the stored procedure
+            DB.Execute("sproc_tbStaff_FilterByStaffID");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                mJoinedDate = Convert.ToDateTime(DB.DataTable.Rows[0]["JoinedDate"]);
+                mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
+                mLastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["Availability"]);
+                mPhoneNo = Convert.ToString(DB.DataTable.Rows[0]["PhoneNo"]);
+
+                //return that everything Worked Fine
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
+            
         }
     }
 }
