@@ -30,4 +30,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to the view page
         Response.Redirect("OrderLineViewer.aspx");
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address class
+        clsOrderLine AnOrderLine = new clsOrderLine();
+        //create a variable to store the primary key
+        Int32 OrderLineId;
+        //create a varaible to store the results of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        OrderLineId = Convert.ToInt32(txtOrderLineId.Text);
+        //find the record 
+        Found = AnOrderLine.Find(OrderLineId);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtOrderId.Text = AnOrderLine.OrderID.ToString();
+            txtProductId.Text = AnOrderLine.ProductID.ToString();
+            txtQuantity.Text = AnOrderLine.Quantity.ToString();
+        }
+
+        else
+        {
+            lblError.Text = "Order Line ID not found";
+        }
+
+    }
 }

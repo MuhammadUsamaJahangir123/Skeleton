@@ -74,7 +74,7 @@ namespace Testing6
             //create a boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderLineID = 8;
+            Int32 OrderLineID = 2;
             //invoke the method
             Found = AnOrderLine.Find(OrderLineID);
             //test to see if the result is true
@@ -92,11 +92,11 @@ namespace Testing6
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderLineId = 8;
+            Int32 OrderLineId = 2;
             //invoke the method
             Found = AnOrderLine.Find(OrderLineId);
             //check the address id property
-            if (AnOrderLine.OrderLineID != 8)
+            if (AnOrderLine.OrderLineID != 2)
             {
                 OK = false;
             }
@@ -114,11 +114,11 @@ namespace Testing6
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderLineId = 8;
+            Int32 OrderLineId = 2;
             //invoke the method
             Found = AnOrderLine.Find(OrderLineId);
             //check the address id property
-            if (AnOrderLine.OrderID != 27)
+            if (AnOrderLine.OrderID != 11)
             {
                 OK = false;
             }
@@ -136,11 +136,11 @@ namespace Testing6
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderLineId = 8;
+            Int32 OrderLineId = 2;
             //invoke the method
             Found = AnOrderLine.Find(OrderLineId);
             //check the address id property
-            if (AnOrderLine.ProductID != 22)
+            if (AnOrderLine.ProductID != 13)
             {
                 OK = false;
             }
@@ -158,11 +158,11 @@ namespace Testing6
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderLineId = 8;
+            Int32 OrderLineId = 2;
             //invoke the method
             Found = AnOrderLine.Find(OrderLineId);
             //check the address id property
-            if (AnOrderLine.Quantity != 4)
+            if (AnOrderLine.Quantity != 5)
             {
                 OK = false;
             }

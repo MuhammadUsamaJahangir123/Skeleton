@@ -24,9 +24,12 @@
         <asp:TextBox ID="txtQuantity" runat="server" style="z-index: 1; left: 116px; top: 138px; position: absolute"></asp:TextBox>
         <p>
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 12px; top: 207px; position: absolute; height: 19px"></asp:Label>
+            <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 295px; top: 9px; position: absolute; height: 29px; width: 75px" Text="Find" />
         </p>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 70px; top: 280px; position: absolute" Text="OK" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 157px; top: 280px; position: absolute" Text="Cancel" />
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>
