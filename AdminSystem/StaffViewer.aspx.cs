@@ -19,10 +19,12 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the Last Name for this entry
         Response.Write(AnStaff.LastName);
         //display the Joined Date for this entry
-        Response.Write(AnStaff.DateAdded);
+        Response.Write(AnStaff.JoinedDate);
         //display the Email for this entry
         Response.Write(AnStaff.Email);
         //display the Availability
         Response.Write(AnStaff.Availability);
+        //display the Phone No for this entry
+        Response.Write(AnStaff.PhoneNo);
     }
 }

@@ -38,13 +38,13 @@ namespace Testing1
             //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property
-            AnStaff.DateAdded = TestData;
+            AnStaff.JoinedDate = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnStaff.DateAdded, TestData);
+            Assert.AreEqual(AnStaff.JoinedDate, TestData);
         }
 
         [TestMethod]
-        public void StaffIdPropertyOK()
+        public void StaffIDPropertyOK()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
@@ -95,6 +95,19 @@ namespace Testing1
             Assert.AreEqual(AnStaff.Email, TestData);
         }
 
+        [TestMethod]
+        public void PhoneNoPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //create some test data to assign to the property
+            string TestData = "07812648962";
+            //assign the data to the property
+            AnStaff.PhoneNo = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnStaff.PhoneNo, TestData);
+        }
+
 
         [TestMethod]
         ////////////////////////////////PRACTICAL 9///////////////////////
@@ -105,7 +118,7 @@ namespace Testing1
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffID = 2;
+            Int32 StaffID = 6;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //test to see if the result is true
@@ -119,15 +132,15 @@ namespace Testing1
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
             //create a Boolean variable to store the result of the search
-            Boolean Found = false;
+            Boolean Found = true;
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 2;
+            Int32 StaffID = 6;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the Staff ID
-            if (AnStaff.StaffID != 2)
+            if (AnStaff.StaffID != 6)
             {
                 OK = false;
             }
@@ -137,7 +150,7 @@ namespace Testing1
 
 
         [TestMethod]
-        public void TestDateAddedFound()
+        public void TestJoinedDateFound()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
@@ -146,11 +159,11 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 2;
+            Int32 StaffID = 6;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the dateAdded property
-            if (AnStaff.DateAdded != Convert.ToDateTime("23/06/2023"))
+            if (AnStaff.JoinedDate != Convert.ToDateTime("29/09/2018"))
             {
                 OK = false;
             }
@@ -169,11 +182,11 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 2;
+            Int32 StaffID = 6;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the FirstName property
-            if (AnStaff.FirstName != "Max")
+            if (AnStaff.FirstName != "Kushal")
             {
                 OK = false;
             }
@@ -192,11 +205,11 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 2;
+            Int32 StaffID = 6;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the LastName property
-            if (AnStaff.LastName != "Verstappen")
+            if (AnStaff.LastName!="Dilip")
             {
                 OK = false;
             }
@@ -215,11 +228,11 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 2;
+            Int32 StaffID = 6;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the LastName property
-            if (AnStaff.Availability != true)
+            if (AnStaff.Availability != false)
             {
                 OK = false;
             }
@@ -238,11 +251,33 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 2;
+            Int32 StaffID = 6;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the LastName property
-            if (AnStaff.Email != "max_verst18@yahoo.com")
+            if (AnStaff.Email != "kush.di16@yahoo.com")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPhoneNoFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 StaffID = 6;
+            //invoke the method
+            Found = AnStaff.Find(StaffID);
+            //check the LastName property
+            if (AnStaff.PhoneNo != "07812450357")
             {
                 OK = false;
             }
