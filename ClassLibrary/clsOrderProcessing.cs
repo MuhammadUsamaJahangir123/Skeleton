@@ -115,11 +115,13 @@ namespace ClassLibrary
                 return false;
             }
         }
-       
 
+        //function for the public validation method
+        public string Valid(string OrderDate)
+        {
+            return "";
+        }
 
-
-
-
+        
     }
 }

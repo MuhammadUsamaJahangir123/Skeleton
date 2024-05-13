@@ -7,6 +7,14 @@ namespace Testing3
     [TestClass]
     public class tstOrderProcessing
     {
+
+        
+            //create test data to pass method
+            string OrderDate = DateTime.Now.ToShortDateString();
+
+        
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -235,6 +243,19 @@ namespace Testing3
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string variable to store any error message
+            string Error = "";
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
         }
 
 
