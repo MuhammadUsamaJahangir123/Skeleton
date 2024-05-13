@@ -131,6 +131,88 @@ namespace ClassLibrary
 
             }
         }
+    
+        public string Valid(string email, string firstName, string lastName, string PhoneNo, string joinedDate)
+        {
+            //create a string varaible to store the error
+            String Error = "";
+            //create a temporary variable to store the date values 
+            DateTime DateTemp;
+
+            //if firstName is blank
+            if (firstName.Length == 0)
+            {
+                Error = Error + "The First Name may not be blank : ";
+
+            }
+            // if the first name is greater then 6
+            if (firstName.Length > 50)
+            {
+                //record error
+                Error = Error + "The First Name must not me less then 6 characters : ";
+            }
+            //if lastname is blank
+            if (lastName.Length == 0)
+            {
+                //record error
+                Error = Error + "The Last Name may not be blank : ";
+            }
+            // if the first name is greater then 6
+            if (lastName.Length > 50)
+            {
+                //record error
+                Error = Error + "The Last Name must not me less then 6 characters : ";
+            }
+            //if email is blank
+            if (email.Length == 0)
+            {
+                //record error
+                Error = Error + "The Last Name may not be blank : ";
+            }
+            // if the first name is greater then 6
+            if (email.Length > 50)
+            {
+                //record error
+                Error = Error + "The Last Name must not me less then 6 characters : ";
+            }
+            //if PhoneNo is blank
+            if (PhoneNo.Length == 0)
+            {
+                //record error
+                Error = Error + "The Last Name may not be blank : ";
+            }
+            // if the first name is greater then 6
+            if (PhoneNo.Length > 50)
+            {
+                //record error
+                Error = Error + "The Last Name must not me less then 6 characters : ";
+            }
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //copy the joinedDate value to the DateTemp Variable
+                DateTemp = Convert.ToDateTime(joinedDate);
+                //check to see if the date is less than tdays date
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateComp)
+                {
+                    //record error
+                    Error = Error + "The data cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was no vaild date : ";
+            }
+                //return any error messages
+                return Error;
+            }
+        }
     }
-}
+
     
