@@ -139,5 +139,102 @@ namespace ClassLibrary
             }
             
         }
+
+        public string Valid(string firstName, string lastName, string email, string phoneNo, string joinedDate)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+
+            //if the firstName is blank
+            if (firstName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The first name may not be blank: ";
+            }
+            //if the firstName is long
+            if (firstName.Length > 16)
+            {
+                //record the error
+                Error = Error + "The first name must be less than 16 characters: ";
+            }
+
+           
+
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statement
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //coppy the joinedDate value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(joinedDate);
+
+                if (DateTemp < DateComp) //compare joinedDate with Date
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past: ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future: ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date: ";
+            }
+
+
+
+            //if the LASTNAME is blank
+            if (lastName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The last name may not be blank: ";
+            }
+            //if the LASTNAME is long
+            if (lastName.Length > 16)
+            {
+                //record the error
+                Error = Error + "The last name must be less than 16 characters: ";
+            }
+
+            //if the EMAIL is blank
+            if (email.Length == 0)
+            {
+                //record the error
+                Error = Error + "The email may not be blank: ";
+            }
+            //if the EMAIL is long
+            if (email.Length > 25)
+            {
+                //record the error
+                Error = Error + "The email must be less than 25 characters: ";
+            }
+
+
+            //if the PHONE NO is blank
+            if (phoneNo.Length == 0)
+            {
+                //record the error
+                Error = Error + "The phone number may not be blank: ";
+            }
+            //if the PHONE NO is long
+            if (phoneNo.Length > 16)
+            {
+                //record the error
+                Error = Error + "The phone number must be less than 25 characters: ";
+            }
+
+
+
+            //return any error messages
+            return Error;
+        }
     }
 }
