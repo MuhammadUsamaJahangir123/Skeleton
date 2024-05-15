@@ -19,11 +19,11 @@ public partial class _1Viewer : System.Web.UI.Page
         //Display ID
         Response.Write(ASupplier.SupplierId);
         //Display contact information
-        Response.Write(ASupplier.ContactInfo);
+        Response.Write(ASupplier.SupplierContact);
         //Display date joined
-        Response.Write(ASupplier.DateAdded);
+        Response.Write(ASupplier.SupplierDate);
         //Display Active
-        Response.Write(ASupplier.Active);
+        Response.Write(ASupplier.SupplierActivity);
 
     }
 }

@@ -15,40 +15,40 @@ namespace Testing4
         }
         
         [TestMethod]
-        public void ActivePropertyOK()
+        public void SupplierActivityOK()
         {
             clsSupplier ASupplier = new clsSupplier();
             Boolean TestData = true;
-            ASupplier.Active = TestData;
-            Assert.AreEqual(ASupplier.Active, TestData);
+            ASupplier.SupplierActivity = TestData;
+            Assert.AreEqual(ASupplier.SupplierActivity, TestData);
         }
         [TestMethod]
-        public void DateAddedPropertyOK()
+        public void SupplierDateOK()
         {
             clsSupplier ASupplier = new clsSupplier();
             DateTime TestData = DateTime.Now.Date;
-            ASupplier.DateAdded = TestData;
-            Assert.AreEqual(ASupplier.DateAdded, TestData);
+            ASupplier.SupplierDate = TestData;
+            Assert.AreEqual(ASupplier.SupplierDate, TestData);
         }
         [TestMethod]
-        public void SupplierIdPropertyOK()
+        public void SupplierIdOK()
         {
             clsSupplier ASupplier = new clsSupplier();
-            Int32 TestData = 1;
+            Int32 TestData = 5;
             ASupplier.SupplierId = TestData;
             Assert.AreEqual(ASupplier.SupplierId,TestData);
         }
         [TestMethod]
-        public void ContactInfoPropertyOK()
+        public void SupplierContactOK()
         {
             clsSupplier ASupplier = new clsSupplier();
             String TestData = "gurjot@gmail.com";
-            ASupplier.ContactInfo = TestData;
-            Assert.AreEqual(ASupplier.ContactInfo, TestData);
+            ASupplier.SupplierContact = TestData;
+            Assert.AreEqual(ASupplier.SupplierContact, TestData);
         }
 
         [TestMethod]
-        public void SupplierNamePropertyOK()
+        public void SupplierNameOK()
         {
             clsSupplier ASupplier = new clsSupplier();
             String TestData = "Gurj";
@@ -64,7 +64,7 @@ namespace Testing4
             //create boolean variable to store results of validation
             Boolean Found = false;
             //Create some test data to use with the method
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 5;
             //invoke the method
             Found = ASupplier.Find(SupplierId);
             //test to see if the results is true
@@ -81,11 +81,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 5;
             //invoke the method
             Found = ASupplier.Find(SupplierId);
             //check the Staff ID
-            if (ASupplier.SupplierId != 21)
+            if (ASupplier.SupplierId != 5)
             {
                 OK = false;
             }
@@ -97,9 +97,9 @@ namespace Testing4
         { clsSupplier ASupplier = new clsSupplier();
             Boolean Found = true;
             Boolean OK = true;
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 5;
             Found= ASupplier.Find(SupplierId);
-            if (ASupplier.DateAdded != Convert.ToDateTime("02/03/2024"))
+            if (ASupplier.SupplierDate != Convert.ToDateTime("02/03/2024"))
             {
                 OK = false;
             }
@@ -112,9 +112,9 @@ namespace Testing4
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = true;
             Boolean OK = true;
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 5;
             Found = ASupplier.Find(SupplierId);
-            if (ASupplier.Active != true)
+            if (ASupplier.SupplierActivity != true)
             {
                 OK = false;
             }
@@ -126,9 +126,9 @@ namespace Testing4
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = true;
             Boolean OK = true;
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 5;
             Found = ASupplier.Find(SupplierId);
-            if (ASupplier.ContactInfo != "Gurjot@gmail.com")
+            if (ASupplier.SupplierContact != "Gurjot@gmail.com")
             {
                 OK = false;
             }
@@ -140,7 +140,7 @@ namespace Testing4
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = true;
             Boolean OK = true;
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 5;
             Found = ASupplier.Find(SupplierId);
             if (ASupplier.SupplierName != "Gurj")
             {  
