@@ -119,7 +119,36 @@ namespace ClassLibrary
         //function for the public validation method
         public string Valid(string OrderDate)
         {
-            return "";
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the data values
+            DateTime DateTemp;
+            //create an instance of datetime to compare with datetemp
+            //in the if statements
+            DateTime DateComp = DateTime.Now.Date;
+            try
+
+            {
+                //copy the OrderDate value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(OrderDate);
+                //check to see if the date is less than today's date
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateComp)
+                {
+                    //record error
+                    Error = Error + "The data cannot be in the future : ";
+                }
+            } catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            //return any error messages
+            return Error;
         }
 
         
