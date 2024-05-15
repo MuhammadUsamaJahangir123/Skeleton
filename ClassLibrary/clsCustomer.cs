@@ -167,25 +167,25 @@ namespace ClassLibrary
             if (email.Length == 0)
             {
                 //record error
-                Error = Error + "The Last Name may not be blank : ";
+                Error = Error + "The Email may not be blank : ";
             }
             // if the first name is greater then 6
             if (email.Length > 50)
             {
                 //record error
-                Error = Error + "The Last Name must not me less then 6 characters : ";
+                Error = Error + "The Email must not me less then 6 characters : ";
             }
             //if PhoneNo is blank
             if (PhoneNo.Length == 0)
             {
                 //record error
-                Error = Error + "The Last Name may not be blank : ";
+                Error = Error + "The PhoneNo may not be blank : ";
             }
             // if the first name is greater then 6
             if (PhoneNo.Length > 50)
             {
                 //record error
-                Error = Error + "The Last Name must not me less then 6 characters : ";
+                Error = Error + "The PhoneNo must not me less then 6 characters : ";
             }
             DateTime DateComp = DateTime.Now.Date;
 

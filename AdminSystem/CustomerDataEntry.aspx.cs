@@ -16,24 +16,45 @@ public partial class _1_DataEntry : System.Web.UI.Page
     { 
         clsCustomer AnCustomer = new clsCustomer();
 
-        AnCustomer.customerID = Convert.ToInt32(txtCustomerID.Text);
+        //AnCustomer.customerID = Convert.ToInt32(txtCustomerID.Text);
         //capture the customer first name
-        AnCustomer.firstName = txtFirstName.Text;
+        string firstName = txtFirstName.Text;
         //capture the customer last name
-        AnCustomer.lastName = txtLastName.Text;
+        string lastName = txtLastName.Text;
         //capture the customer Email
-        AnCustomer.email = txtEmail.Text;
+        string email = txtEmail.Text;
         //capture the date
-        AnCustomer.joinedDate = Convert.ToDateTime(DateTime.Now);
+        string joinedDate = txtJoinedDate.Text;
         //capture if the subscribed
-        AnCustomer.subscribe = chkSubscribe.Checked;
+        string subscribe = chkSubscribe.Text;
         //capture the phone no
-        AnCustomer.PhoneNo = txtPhoneNo.Text;
+        string PhoneNo = txtPhoneNo.Text;
+        //Variable to store any error messages
+        string Error = "";
+        //Validate Data
+        Error = AnCustomer.Valid(email, firstName, lastName, PhoneNo, joinedDate);
+        if (Error == "")
+        {
+            //Capture email
+            AnCustomer.email = email;
+            //Capture first Name
+            AnCustomer.firstName = firstName;
+            //capture last name
+            AnCustomer.lastName = lastName;
+            //capture phone no
+            AnCustomer.PhoneNo = PhoneNo;
+            //capture joineddate
+            AnCustomer.joinedDate = Convert.ToDateTime(joinedDate);
 
-        Session["AnCustomer"] = AnCustomer;
-        //navigate to the view page
-        Response.Redirect("CustomerViewer.aspx");
-
+            Session["AnCustomer"] = AnCustomer;
+            //navigate to the view page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void txtCustomerID_TextChanged(object sender, EventArgs e)
