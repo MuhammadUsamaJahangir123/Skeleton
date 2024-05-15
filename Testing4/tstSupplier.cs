@@ -7,13 +7,21 @@ namespace Testing4
     [TestClass]
     public class tstSupplier
     {
+        //good test data
+        string SupplierId = "12b";
+        string SupplierName = "Gurj";
+        string SupplierContact = "something";
+        string SupplierActivity = "yes";
+        string SupplierDate = DateTime.Now.ToShortDateString();
+
+
         [TestMethod]
         public void InstanceOK()
         {
             clsSupplier ASupplier = new clsSupplier();
             Assert.IsNotNull(ASupplier);
         }
-        
+
         [TestMethod]
         public void SupplierActivityOK()
         {
@@ -23,7 +31,7 @@ namespace Testing4
             Assert.AreEqual(ASupplier.SupplierActivity, TestData);
         }
         [TestMethod]
-        public void SupplierDateOK()
+        public void SupplierDatePropertyOK()
         {
             clsSupplier ASupplier = new clsSupplier();
             DateTime TestData = DateTime.Now.Date;
@@ -31,15 +39,15 @@ namespace Testing4
             Assert.AreEqual(ASupplier.SupplierDate, TestData);
         }
         [TestMethod]
-        public void SupplierIdOK()
+        public void SupplierIdPropertyOK()
         {
             clsSupplier ASupplier = new clsSupplier();
             Int32 TestData = 5;
             ASupplier.SupplierId = TestData;
-            Assert.AreEqual(ASupplier.SupplierId,TestData);
+            Assert.AreEqual(ASupplier.SupplierId, TestData);
         }
         [TestMethod]
-        public void SupplierContactOK()
+        public void SupplierContactPropertyOK()
         {
             clsSupplier ASupplier = new clsSupplier();
             String TestData = "gurjot@gmail.com";
@@ -48,7 +56,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void SupplierNameOK()
+        public void SupplierNamePropertyOK()
         {
             clsSupplier ASupplier = new clsSupplier();
             String TestData = "Gurj";
@@ -69,7 +77,7 @@ namespace Testing4
             Found = ASupplier.Find(SupplierId);
             //test to see if the results is true
             Assert.IsTrue(Found);
-                    
+
         }
         [TestMethod]
         public void TestSupplierIdFound()
@@ -94,11 +102,12 @@ namespace Testing4
         }
         [TestMethod]
         public void TestDateAddedFound()
-        { clsSupplier ASupplier = new clsSupplier();
+        {
+            clsSupplier ASupplier = new clsSupplier();
             Boolean Found = true;
             Boolean OK = true;
             Int32 SupplierId = 5;
-            Found= ASupplier.Find(SupplierId);
+            Found = ASupplier.Find(SupplierId);
             if (ASupplier.SupplierDate != Convert.ToDateTime("02/03/2024"))
             {
                 OK = false;
@@ -135,7 +144,7 @@ namespace Testing4
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestSupplierName() 
+        public void TestSupplierName()
         {
             clsSupplier ASupplier = new clsSupplier();
             Boolean Found = true;
@@ -143,15 +152,29 @@ namespace Testing4
             Int32 SupplierId = 5;
             Found = ASupplier.Find(SupplierId);
             if (ASupplier.SupplierName != "Gurj")
-            {  
-                OK = false; 
+            {
+                OK = false;
             }
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void ValidMethodOK()     
+        {
+            //create an instance of Supplier class
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store error message
+            String Error =  "";
+            //invoke the method
+            Error = ASupplier.Valid(SupplierId, SupplierName, SupplierDate, SupplierActivity, SupplierContact);
+            Assert.AreEqual(Error, "");
 
-        
-        
-
+        }
     }
+
 }
+
+
+       
+    
+
 
