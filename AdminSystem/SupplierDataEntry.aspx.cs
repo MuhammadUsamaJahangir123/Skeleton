@@ -10,14 +10,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-        
+
+
 
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-   
+
         clsSupplier ASupplier = new clsSupplier();
         //capture Name
         ASupplier.SupplierName = txtSupplierName.Text;
@@ -39,7 +39,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
     }
-    protected void txtSupplierId_TextChanged(object sender, EventArgs e){}
+    protected void txtSupplierId_TextChanged(object sender, EventArgs e) { }
     protected void txtSupplierName_TextChanged(object sender, EventArgs e) { }
     protected void txtContactInfo_TextChanged(object sender, EventArgs e) { }
     protected void txtDateAdded_TextChanged(object sender, EventArgs e) { }
@@ -52,7 +52,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
-        
+
     {
         //new instance of supplier class
         clsSupplier ASupplier = new clsSupplier();
@@ -77,4 +77,5 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
 
     }
+
 }

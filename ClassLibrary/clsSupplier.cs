@@ -103,9 +103,9 @@ namespace ClassLibrary
 
         }
 
-
-
-
-
+        public string Valid(string supplierId, string supplierName, string supplierDate, string supplierActivity, string supplierContact)
+        {
+            return "";
+        }
     }
 }
