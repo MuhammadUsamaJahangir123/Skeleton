@@ -19,22 +19,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsOrderProcessing
         clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
-        //store the data in the session object
-
-        AnOrderProcessing.OrderID = Convert.ToInt32(txtOrderId.Text);
-        AnOrderProcessing.CustomerID = Convert.ToInt32(txtCustomerId.Text);
-        AnOrderProcessing.StaffID = Convert.ToInt32(txtStaffId.Text);
-        AnOrderProcessing.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
-        AnOrderProcessing.TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
-        AnOrderProcessing.ShippingStatus = chkShippingStatus.Checked;
-
-        //navigate to the view page
-        Session["AnOrderProcessing"] = AnOrderProcessing;
-
-
-
-        Response.Redirect("OrderProcessingViewer.aspx");
-
+        //capture the customerID
+        string CustomerId = txtCustomerId.Text;
+        //capture the staff Id
+        string StaffId = txtStaffId.Text;
+        //capture the order date
+        string OrderDate = txtOrderDate.Text;
+        //capture the total amount
+        string TotalAmount = txtTotalAmount.Text;
+        //capture the shipping status
+        string ShippingStatus = chkShippingStatus.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnOrderProcessing.Valid(OrderDate);
+        if (Error == "")
+        {
+            //capture the order date
+            AnOrderProcessing.OrderDate = Convert.ToDateTime(OrderDate);
+            //store the OrderProcessing in the session object
+            Session["AnOrderProcessing"] = AnOrderProcessing;
+            //navigate to the view page
+            Response.Redirect("OrderProcessingViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void Button1_Click(object sender, EventArgs e)
