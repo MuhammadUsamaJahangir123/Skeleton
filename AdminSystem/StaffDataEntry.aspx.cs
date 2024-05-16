@@ -18,22 +18,45 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsStaff
         clsStaff AnStaff = new clsStaff();
         //capture the FirstName
-        AnStaff.FirstName = txtFirstName.Text;
+        string FirstName = txtFirstName.Text;
         //capture the LastName
-        AnStaff.LastName = txtLastName.Text;
+        string LastName = txtLastName.Text;
         //capture the JoinedDate
-        AnStaff.JoinedDate = Convert.ToDateTime(DateTime.Now);
+        string JoinedDate = txtJoinedDate.Text;
         //capture the email
-        AnStaff.Email = txtEmail.Text;
+        string Email = txtEmail.Text;
         //capture the Phone No
-        AnStaff.PhoneNo = txtPhoneNo.Text;
+        string PhoneNo = txtPhoneNo.Text;
         //capture the availability checkBox
-        AnStaff.Availability = chkAvailability.Checked;
-      
-        //store the staff in the session object
-        Session["AnStaff"] = AnStaff;
-        //navigate to the view page
-        Response.Redirect("StaffViewer.aspx");
+        string Availability = chkAvailability.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnStaff.Valid(FirstName, LastName, Email, PhoneNo, JoinedDate);
+        if (Error == "")
+        {
+            //capture the FIRSTNAME
+            AnStaff.FirstName = FirstName;
+            //capture the LASTNAME
+            AnStaff.LastName = LastName;
+            //capture the EMAIL
+            AnStaff.Email = Email;
+            //capture the PHONE NO
+            AnStaff.PhoneNo = PhoneNo;
+            AnStaff.JoinedDate = Convert.ToDateTime(JoinedDate);
+            AnStaff.Availability = chkAvailability.Checked;
+            //store the staff in the session object
+            Session["AnStaff"] = AnStaff;
+            //navigate to the view page
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+
+        
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

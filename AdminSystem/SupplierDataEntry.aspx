@@ -1,4 +1,4 @@
-﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SupplierDataEntry.aspx.cs" Inherits="_1_DataEntry" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SupplierDataEntry.aspx.cs" Inherits="_1_DataEntry" %>
 
 <!DOCTYPE html>
 
@@ -32,6 +32,7 @@
         </p>
         <asp:Label ID="lblSupplierName" runat="server" height="19px" style="z-index: 1; left: 13px; top: 74px; position: absolute" Text="Supplier Name" width="111px"></asp:Label>
         <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" style="z-index: 1; left: 225px; top: 232px; position: absolute" Text="Cancel" />
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 315px; top: 44px; position: absolute" Text="Find" />
     </form>
 </body>
 </html>

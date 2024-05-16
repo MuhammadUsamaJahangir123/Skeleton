@@ -98,8 +98,30 @@ namespace Testing5
             //test to see if the two values are the same
             Assert.AreEqual(AnStock.ProductPrice, TestData;
         }
+        [Test Method]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //boolean variable to store results of the validation
+            Boolean Found  = false;
+            //create some test data with the method
+            Boolean IsAvailable = false;
+            //invoke the method
+            Found = AnStock.Find(IsAvailable);
+            //test to see if result is true
+            Assert.IsTrue(Found);
+        }
+
     }
 
+    class clsStock
+    {
+        internal bool Find(bool isAvailable)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
 
 

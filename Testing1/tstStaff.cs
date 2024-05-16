@@ -405,7 +405,7 @@ namespace Testing1
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, Email, PhoneNo, JoinedDate);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -657,7 +657,7 @@ namespace Testing1
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, Email, PhoneNo, JoinedDate);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -771,7 +771,7 @@ namespace Testing1
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, Email, PhoneNo, JoinedDate);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -885,7 +885,7 @@ namespace Testing1
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, Email, PhoneNo, JoinedDate);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
