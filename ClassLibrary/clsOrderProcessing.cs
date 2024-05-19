@@ -86,6 +86,8 @@ namespace ClassLibrary
             }
         }
 
+        public string ShippingAddress { get; set; }
+
         public bool Find(int orderId)
         {
             clsDataConnection DB = new clsDataConnection();
