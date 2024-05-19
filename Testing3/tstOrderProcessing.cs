@@ -98,6 +98,19 @@ namespace Testing3
         }
 
         [TestMethod]
+        public void ShippingAddressPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //create some test data to assign to the property
+            string TestData = "dogstreet";
+            //assign the data to the property
+            AnOrderProcessing.ShippingAddress = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnOrderProcessing.ShippingAddress, TestData);
+        }
+
+        [TestMethod]
         public void FindMethodOK()
         {
             //create an instance of the class we want to create
