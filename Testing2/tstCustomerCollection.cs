@@ -104,15 +104,42 @@ namespace Testing2
             Assert.AreEqual(AllCustomers.Count, TestList.Count);
 
         }
-      /**  [TestMethod]
-        public void TwoRecordPresent()
+        /**  [TestMethod]
+          public void TwoRecordPresent()
+          {
+              //create an instance of the class we want to create
+              clsCustomerCollection AllCustomer = new clsCustomerCollection();
+              //test to see that the two values are the same
+              Assert.AreEqual(AllCustomer.Count, 2);
+          } **/
+        [TestMethod]
+        public void AddMethodOK()
         {
             //create an instance of the class we want to create
-            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key
+            Int32 PrimaryKey = 1;
+            //set its properties
+            TestItem.subscribe = true;
+            TestItem.firstName = "Dia";
+            TestItem.lastName = "Pia";
+            TestItem.PhoneNo = "07909535912";
+            TestItem.joinedDate = DateTime.Now;
+            TestItem.email = "DiaPia@gmail.com";
+            //set the customer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary let of the test data 
+            TestItem.customerID = PrimaryKey;
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
             //test to see that the two values are the same
-            Assert.AreEqual(AllCustomer.Count, 2);
-        } **/
-      
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+
+        }
     } 
 }
 

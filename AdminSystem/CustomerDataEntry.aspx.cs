@@ -45,10 +45,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.PhoneNo = PhoneNo;
             //capture joineddate
             AnCustomer.joinedDate = Convert.ToDateTime(joinedDate);
-
-            Session["AnCustomer"] = AnCustomer;
+            //Capture subscribe
+            AnCustomer.subscribe = chkSubscribe.Checked;
+            //create a new instance of the customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();  
+            //set the ThisCustomer Property
+            CustomerList.ThisCustomer = AnCustomer;
+            //add new record
+            CustomerList.Add();
             //navigate to the view page
-            Response.Redirect("CustomerViewer.aspx");
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
