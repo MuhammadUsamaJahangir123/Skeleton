@@ -29,10 +29,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string TotalAmount = txtTotalAmount.Text;
         //capture the shipping status
         string ShippingStatus = chkShippingStatus.Text;
+        //capture the shipping Address
+        string ShippingAddress = txtShippingAddress.Text;
         //variable to store any error messages
         string Error = "";
         //validate the data
-        Error = AnOrderProcessing.Valid(OrderDate);
+        Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress);
         if (Error == "")
         {
             //capture the order date
@@ -89,6 +91,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtStaffId.Text = AnOrderProcessing.StaffID.ToString();
             txtTotalAmount.Text = AnOrderProcessing.TotalAmount.ToString();
             chkShippingStatus.Checked = AnOrderProcessing.ShippingStatus;
+            txtShippingAddress.Text = AnOrderProcessing.ShippingAddress;
         }
 
         else

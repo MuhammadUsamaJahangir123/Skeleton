@@ -16,6 +16,8 @@ namespace ClassLibrary
         private Boolean mShippingStatus;
         //private data member for OrderDate property
         private Decimal mTotalAmount;
+        //private data member for ShippingAddress property
+        private string mShippingAddress;
 
 
 
@@ -86,7 +88,17 @@ namespace ClassLibrary
             }
         }
 
-        public string ShippingAddress { get; set; }
+        public string ShippingAddress {
+            get
+            { //this line of code sends data out of the property
+                return mShippingAddress;
+            }
+            set
+            {
+                // this line of code allows data into the property
+                mShippingAddress = value;
+            }
+        }
 
         public bool Find(int orderId)
         {
@@ -106,6 +118,7 @@ namespace ClassLibrary
                 mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
                 mShippingStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["ShippingStatus"]);
                 mTotalAmount = Convert.ToDecimal(DB.DataTable.Rows[0]["TotalAmount"]);
+                mShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
 
                 // return that everything worked ok
                 return true;
@@ -119,12 +132,32 @@ namespace ClassLibrary
         }
 
         //function for the public validation method
-        public string Valid(string OrderDate)
+        public string Valid(string OrderDate, string ShippingAddress)
         {
             //create a string variable to store the error
             String Error = "";
             //create a temporary variable to store the data values
             DateTime DateTemp;
+
+            //if ShippingAddress is blank
+            if (ShippingAddress.Length == 0)
+            {
+                Error = Error + "The Shipping Address may not be blank : ";
+
+            }
+            // if the Shipping Address is no greater then 6
+            if (ShippingAddress.Length > 6)
+            {
+                //record error
+                Error = Error + "The Shipping Address must not be less then 6 characters : ";
+            }
+
+
+
+
+
+
+
             //create an instance of datetime to compare with datetemp
             //in the if statements
             DateTime DateComp = DateTime.Now.Date;
