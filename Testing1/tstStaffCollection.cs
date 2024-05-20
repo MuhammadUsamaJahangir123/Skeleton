@@ -104,6 +104,39 @@ namespace Testing1
 
         }
 
+
+        ///////////////////     PRACTICAL 13A       ////////////////////////
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instane of the class we want to create
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            //create the item of the test data
+            clsStaff TestItem = new clsStaff();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Availability = true;
+            TestItem.StaffID = 1;
+            TestItem.FirstName = "Jenson";
+            TestItem.LastName = "Button";
+            TestItem.JoinedDate = DateTime.Now;
+            TestItem.Email = "Jen.Butt12@gmail.com";
+            TestItem.PhoneNo = "07812645801";
+
+            //set ThisAddress to the test data
+            AllStaffs.ThisStaff = TestItem;
+            //add the record
+            PrimaryKey = AllStaffs.Add();
+            //set the primary key of the test data
+            TestItem.StaffID = PrimaryKey;
+            //find the record
+            AllStaffs.ThisStaff.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStaffs.ThisStaff, TestItem);
+
+        }
+
         
 
 
