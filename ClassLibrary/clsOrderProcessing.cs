@@ -132,7 +132,7 @@ namespace ClassLibrary
         }
 
         //function for the public validation method
-        public string Valid(string OrderDate, string ShippingAddress)
+        public string Valid(string OrderDate, string ShippingAddress, decimal TotalAmount)
         {
             //create a string variable to store the error
             String Error = "";
@@ -145,18 +145,19 @@ namespace ClassLibrary
                 Error = Error + "The Shipping Address may not be blank : ";
 
             }
-            // if the Shipping Address is no greater then 6
-            if (ShippingAddress.Length > 6)
+            // if the Shipping Address is no greater then 50
+            if (ShippingAddress.Length > 50)
             {
                 //record error
-                Error = Error + "The Shipping Address must not be less then 6 characters : ";
+                Error = Error + "The Shipping Address must not be more than 50 characters : ";
             }
 
+            //if the totalamount is 
 
-
-
-
-
+            if(TotalAmount < (decimal)0.00)
+            {
+                Error = Error + "The total price cannot be less than 0 :";
+            }
 
             //create an instance of datetime to compare with datetemp
             //in the if statements

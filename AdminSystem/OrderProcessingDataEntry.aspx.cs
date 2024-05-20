@@ -26,7 +26,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the order date
         string OrderDate = txtOrderDate.Text;
         //capture the total amount
-        string TotalAmount = txtTotalAmount.Text;
+        decimal TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
         //capture the shipping status
         string ShippingStatus = chkShippingStatus.Text;
         //capture the shipping Address
@@ -34,11 +34,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store any error messages
         string Error = "";
         //validate the data
-        Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress);
+        Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress,TotalAmount);
         if (Error == "")
         {
             //capture the order date
             AnOrderProcessing.OrderDate = Convert.ToDateTime(OrderDate);
+            //capture the ShippingAddress
+            AnOrderProcessing.ShippingAddress = ShippingAddress;
+            //capture the TotalAmount
+            AnOrderProcessing.TotalAmount = TotalAmount;
+
             //store the OrderProcessing in the session object
             Session["AnOrderProcessing"] = AnOrderProcessing;
             //navigate to the view page
