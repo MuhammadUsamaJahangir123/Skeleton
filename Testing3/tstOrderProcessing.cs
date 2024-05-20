@@ -12,6 +12,7 @@ namespace Testing3
             //create test data to pass method
             string OrderDate = DateTime.Now.ToShortDateString();
             string ShippingAddress = "random address";
+            decimal TotalAmount = (decimal)60.50;
 
         
 
@@ -290,7 +291,7 @@ namespace Testing3
             //string variable to store any error message
             string Error = "";
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress);
+            Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress, TotalAmount);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -311,7 +312,7 @@ namespace Testing3
             // convert the date variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress);
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress, TotalAmount);
             //test to see that the results is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -332,7 +333,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress);
+            Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress, TotalAmount);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -350,7 +351,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress);
+            Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress, TotalAmount);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -370,7 +371,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress);
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress, TotalAmount);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -390,7 +391,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string OrderDate = TestDate.ToString();
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress);
+            Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress, TotalAmount);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -404,7 +405,7 @@ namespace Testing3
             //set joined data a non date value
             string OrderDate = "This is not a date! ";
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress);
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress, TotalAmount);
             //Test to see that the results is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -419,7 +420,7 @@ namespace Testing3
             //create some test data to pass to method 
             string ShippingAddress = "";
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress);
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress, TotalAmount);
             //test to see that the results is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -433,7 +434,7 @@ namespace Testing3
             //create some test data to pass to method 
             string ShippingAddress = "a";
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress);
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress, TotalAmount);
             //test to see that the results is correct
             Assert.AreEqual(Error, "");
         }
@@ -448,7 +449,7 @@ namespace Testing3
             //create some test data to pass to method 
             string ShippingAddress = "aa";
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress);
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress, TotalAmount);
             //test to see that the results is correct
             Assert.AreEqual(Error, "");
         }
@@ -462,7 +463,8 @@ namespace Testing3
             //create some test data to pass to method 
             string ShippingAddress = "";
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress);
+            ShippingAddress = ShippingAddress.PadRight(49, 'a');
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress, TotalAmount);
             //test to see that the results is correct
             Assert.AreEqual(Error, "");
         }
@@ -476,7 +478,8 @@ namespace Testing3
             //create some test data to pass to method 
             string ShippingAddress = "";
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress);
+            ShippingAddress = ShippingAddress.PadRight(50, 'a');
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress, TotalAmount);
             //test to see that the results is correct
             Assert.AreEqual(Error, "");
         }
@@ -490,7 +493,8 @@ namespace Testing3
             //create some test data to pass to method 
             string ShippingAddress = "";
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress);
+            ShippingAddress = ShippingAddress.PadRight(25, 'a');
+            Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress, TotalAmount);
             //test to see that the results is correct
             Assert.AreEqual(Error, "");
         }
@@ -503,11 +507,12 @@ namespace Testing3
             // String variable to store an error message 
             String Error = "";
             //create some test data to pass to method 
-            string ShippingAddress = "aaaaaaa";
+            string ShippingAddress = "";
             //invoke the method
-            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress);
+            ShippingAddress = ShippingAddress.PadRight(51, 'a');
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress, TotalAmount);
             //test to see that the results is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -520,11 +525,52 @@ namespace Testing3
             //create some test data to pass to method 
             string ShippingAddress = "";
             ShippingAddress = ShippingAddress.PadRight(500, 'a');
-            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress);
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress, TotalAmount);
             //test to see that the results is correct
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
+        public void TotalAmountMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            // String variable to store an error message 
+            String Error = "";
+            //create some test data to pass to method 
+            Decimal TotalAmount = (decimal)0.01;
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress, TotalAmount);
+            //test to see that the results is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalAmountMinMinusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            // String variable to store an error message 
+            String Error = "";
+            //create some test data to pass to method 
+            Decimal TotalAmount = (decimal)-0.01;
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress,TotalAmount);
+            //test to see that the results is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalAmountMine()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            // String variable to store an error message 
+            String Error = "";
+            //create some test data to pass to method 
+            Decimal TotalAmount = (decimal)0.00;
+            Error = AnOrderProcessing.Valid(OrderDate, ShippingAddress, TotalAmount);
+            //test to see that the results is correct
+            Assert.AreEqual(Error, "");
+        }
 
 
     }
