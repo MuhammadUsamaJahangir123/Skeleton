@@ -13,6 +13,7 @@ namespace Testing4
         string SupplierContact = "something";
         string SupplierActivity = "yes";
         string SupplierDate = DateTime.Now.ToShortDateString();
+        
 
 
         [TestMethod]
@@ -63,6 +64,24 @@ namespace Testing4
             ASupplier.SupplierName = TestData;
             Assert.AreEqual(ASupplier.SupplierName, TestData);
         }
+
+        [TestMethod]
+        public void SupplierShippingTimeOK()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            Int32 TestData = 5;
+            ASupplier.SupplierShippingTime = TestData;
+            Assert.AreEqual(ASupplier.SupplierShippingTime, TestData);
+        }
+        [TestMethod]
+        public void SupplierPostCodeOK()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            String TestData = "LE5 5EL";
+            ASupplier.SupplierPostCode = TestData;
+            Assert.AreEqual(ASupplier.SupplierPostCode, TestData);
+        }
+
 
         [TestMethod]
         public void FindMethod()
