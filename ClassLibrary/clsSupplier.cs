@@ -10,6 +10,11 @@ namespace ClassLibrary
         private Boolean mSupplierActivity;
         private String mSupplierName;
         private String mSupplierContact;
+        private Int32 mSupplierShippingTime;
+        private String mSupplierPostCode;
+
+
+
 
 
 
@@ -70,6 +75,30 @@ namespace ClassLibrary
             set
             {
                 mSupplierName = value;
+            }
+        }
+
+        public int SupplierShippingTime
+        {
+            get
+            {
+                return mSupplierShippingTime;
+            }
+            set
+            {
+                mSupplierShippingTime = value;
+            }
+        }
+
+        public string SupplierPostCode
+        {
+            get
+            {
+                return mSupplierPostCode;
+            }
+            set
+            {
+                mSupplierPostCode = value;
             }
         }
 
