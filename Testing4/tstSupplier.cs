@@ -13,6 +13,8 @@ namespace Testing4
         string SupplierContact = "something";
         string SupplierActivity = "yes";
         string SupplierDate = DateTime.Now.ToShortDateString();
+        string SupplierShippingTime = "5";
+        string SupplierPostCode = "LE5 2ER";
         
 
 
@@ -135,6 +137,49 @@ namespace Testing4
             Assert.IsTrue(OK);
         }
         [TestMethod]
+        public void TestSupplierShippingTimeFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = true;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 SupplierId = 5;
+            //invoke the method
+            Found = ASupplier.Find(SupplierId);
+            //check the supplier Id
+            if (ASupplier.SupplierShippingTime != 5)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        
+        [TestMethod]
+        public void TestSupplierPostCodeFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = true;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 SupplierId = 5;
+            //invoke the method
+            Found = ASupplier.Find(SupplierId);
+            //check the supplier post code
+            if (ASupplier.SupplierPostCode != "LE5 2ER")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
         public void TestActive()
         {
             clsSupplier ASupplier = new clsSupplier();
@@ -184,9 +229,23 @@ namespace Testing4
             //string variable to store error message
             String Error =  "";
             //invoke the method
-            Error = ASupplier.Valid(SupplierId, SupplierName, SupplierDate, SupplierActivity, SupplierContact);
+            Error = ASupplier.Valid(SupplierName, SupplierDate, SupplierContact, SupplierShippingTime, SupplierPostCode);
             Assert.AreEqual(Error, "");
 
+        }
+        [TestMethod]
+        public void SupplierPostCodeMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string SupplierPostCode = "";
+            //invoke the method
+            Error = ASupplier.Valid(SupplierPostCode, SupplierName, SupplierDate, SupplierContact, SupplierShippingTime);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
     }
 

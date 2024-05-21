@@ -119,6 +119,8 @@ namespace ClassLibrary
                 mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
                 mSupplierContact = Convert.ToString(DB.DataTable.Rows[0]["SupplierContact"]);
                 mSupplierActivity = Convert.ToBoolean(DB.DataTable.Rows[0]["SupplierActivity"]);
+                mSupplierPostCode = Convert.ToString(DB.DataTable.Rows[0]["SupplierPostCode"]);
+                mSupplierShippingTime = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierShippingTime"]);
 
                 //return that everything Worked Fine
                 return true;
@@ -132,9 +134,29 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string supplierId, string supplierName, string supplierDate, string supplierActivity, string supplierContact)
+       
+
+        public string Valid(string supplierName, string supplierDate, string supplierContact, string supplierShippingTime, string supplierPostCode)
         {
-            return "";
+
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+
+            //if the firstName is blank
+            if (SupplierPostCode.Length == 0)
+            {
+                //record the error
+                Error = Error + "The S name may not be blank: ";
+            }
+            //if the firstName is long
+            if (SupplierPostCode.Length > 16)
+            {
+                //record the error
+                Error = Error + "The first name must be less than 16 characters: ";
+            }
+            return Error;
         }
     }
 }
