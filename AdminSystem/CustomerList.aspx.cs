@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
@@ -11,6 +12,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //if this is the first time the page is displayed
+
         if (IsPostBack == false)
         {
             //update the list box
@@ -38,5 +40,25 @@ public partial class _1_List : System.Web.UI.Page
         Session["customerID"] = -1;
         //redirect to the data entry page
         Response.Redirect("CustomerDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //varaible to store the primary key to value of the record to be edited
+        Int32 customerID;
+        //if record has been sleceted from the list
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to edit
+            customerID = Convert.ToInt32(lstCustomerList.SelectedValue);
+            //store the data in the session object
+            Session["customerID"] = customerID;
+            //redirect to the edit page
+            Response.Redirect("CustomerDataEntry.aspx");
+        }
+        else // if no record has been selected
+        {
+            lblError.Text = "Please select a record fromt he list to edit";
+        }
     }
 }

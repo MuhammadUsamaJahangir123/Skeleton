@@ -8,12 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 customerID;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //if this is the first time the page is displayed
+        customerID = Convert.ToInt32(Session["customerID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (customerID != -1)
+            { //update the list box
+                DisplayCustomers();
+            }
+        }
+    }
+    void DisplayCustomers()
+    {
+        //create an instance of the customer Book
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+        //find the record to update
+        CustomerBook.ThisCustomer.Find(customerID);
+        //display the data for the record
+        txtCustomerID.Text = CustomerBook.ThisCustomer.customerID.ToString();
+        txtFirstName.Text = CustomerBook.ThisCustomer.firstName.ToString();
+        txtLastName.Text = CustomerBook.ThisCustomer.lastName.ToString();
+        txtEmail.Text = CustomerBook.ThisCustomer.email.ToString();
+        txtPhoneNo.Text = CustomerBook.ThisCustomer.PhoneNo.ToString();
+        txtJoinedDate.Text = CustomerBook.ThisCustomer.joinedDate.ToString();
+        chkSubscribe.Checked = CustomerBook.ThisCustomer.subscribe;
     }
     protected void btnOK_Click(object sender, EventArgs e)
-    { 
+    {
         clsCustomer AnCustomer = new clsCustomer();
 
         //AnCustomer.customerID = Convert.ToInt32(txtCustomerID.Text);
@@ -35,6 +60,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnCustomer.Valid(email, firstName, lastName, PhoneNo, joinedDate);
         if (Error == "")
         {
+            //Capture customerID
+            AnCustomer.customerID = customerID;
             //Capture email
             AnCustomer.email = email;
             //Capture first Name
@@ -48,12 +75,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //Capture subscribe
             AnCustomer.subscribe = chkSubscribe.Checked;
             //create a new instance of the customer collection
-            clsCustomerCollection CustomerList = new clsCustomerCollection();  
-            //set the ThisCustomer Property
-            CustomerList.ThisCustomer = AnCustomer;
-            //add new record
-            CustomerList.Add();
-            //navigate to the view page
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //if this is a new record i.e customerID = -1 then add the data
+            if (customerID == -1)
+            {
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = AnCustomer;
+                //add the new record
+                CustomerList.Add();
+            } // otherwise it must be an update
+            else
+            {
+                //find the record to update
+                CustomerList.ThisCustomer.Find(customerID);
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = AnCustomer;
+                //update the record
+                CustomerList.Update();
+            }
+            //redirect back to the list page
             Response.Redirect("CustomerList.aspx");
         }
         else
