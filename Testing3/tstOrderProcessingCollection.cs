@@ -34,6 +34,7 @@ namespace Testing3
             TestItem.TotalAmount = 25m;
             TestItem.ShippingStatus = true;
             TestItem.OrderDate = DateTime.Now;
+            TestItem.ShippingAddress = "beststreet";
             //Add the item to the test list
             TestList.Add(TestItem);
             //Assign the data to the property
@@ -56,6 +57,7 @@ namespace Testing3
             TestOrderProcessing.TotalAmount = 25m;
             TestOrderProcessing.ShippingStatus = true;
             TestOrderProcessing.OrderDate = DateTime.Now;
+            TestOrderProcessing.ShippingAddress = "beststreet";
             //Assign the data to the property
             AllOrderProcessings.ThisOrderProcessing = TestOrderProcessing;
             //Test to see that the two values are the same
@@ -80,12 +82,43 @@ namespace Testing3
             TestItem.TotalAmount = 25m;
             TestItem.ShippingStatus = true;
             TestItem.OrderDate = DateTime.Now;
+            TestItem.ShippingAddress = "beststreet";
             //Add the item to the test list
             TestList.Add(TestItem);
             //Assign the data to the property
             AllOrderProcessings.OrderProcessingList = TestList;
             //Test to see that the two values are the same
             Assert.AreEqual(AllOrderProcessings.Count, TestList.Count);
+        }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //Create an instance of the class we want to create
+            clsOrderProcessingCollection AllOrderProcessings = new clsOrderProcessingCollection();
+            //create the item of test data
+            clsOrderProcessing TestItem = new clsOrderProcessing();
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.OrderID = 1;
+            TestItem.CustomerID = 4;
+            TestItem.StaffID = 3;
+            TestItem.TotalAmount = 25m;
+            TestItem.ShippingStatus = true;
+            TestItem.OrderDate = DateTime.Now;
+            TestItem.ShippingAddress = "beststreet";
+            //set thisOrderProcessing to the test data
+            AllOrderProcessings.ThisOrderProcessing = TestItem;
+            //add the record
+            PrimaryKey = AllOrderProcessings.Add();
+            //set the primary key of the test data
+            TestItem.OrderID = PrimaryKey;
+            //find the record
+            AllOrderProcessings.ThisOrderProcessing.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllOrderProcessings.ThisOrderProcessing, TestItem);
+
+
         }
     }
 }

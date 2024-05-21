@@ -27,9 +27,14 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primay key
         lstOrderProcessingList.DataValueField = "OrderId";
         //set the data field to display
-        lstOrderProcessingList.DataTextField = "CustomerId";
+        lstOrderProcessingList.DataTextField = "ShippingAddress";
         //bind the data to the list
         lstOrderProcessingList.DataBind();
+
+    }
+
+    protected void lstOrderProcessingList_SelectedIndexChanged(object sender, EventArgs e)
+    {
 
     }
 }
