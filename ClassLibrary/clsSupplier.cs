@@ -138,24 +138,24 @@ namespace ClassLibrary
 
         public string Valid(string supplierName, string supplierDate, string supplierContact, string supplierShippingTime, string supplierPostCode)
         {
-
-            //create a string variable to store the error
+            // create a string variable to store the error
             String Error = "";
-            //create a temporary variable to store the date values
-            DateTime DateTemp;
 
-            //if the firstName is blank
-            if (SupplierPostCode.Length == 0)
+            // Validation for PostCode: check if it's less than the minimum length
+            if (supplierPostCode.Length == 0)
             {
-                //record the error
-                Error = Error + "The S name may not be blank: ";
+                Error = "The post code may not be blank : ";
             }
-            //if the firstName is long
-            if (SupplierPostCode.Length > 16)
+
+            // Additional validation if needed for PostCode and other parameters
+            if (supplierPostCode.Length > 9)
             {
-                //record the error
-                Error = Error + "The first name must be less than 16 characters: ";
+                Error = "The post code must be less than 9 characters : ";
             }
+
+            // Add other parameter validations if required
+
+            // return any error messages
             return Error;
         }
     }

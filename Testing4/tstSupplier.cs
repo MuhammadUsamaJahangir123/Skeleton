@@ -8,14 +8,14 @@ namespace Testing4
     public class tstSupplier
     {
         //good test data
-        string SupplierId = "12b";
-        string SupplierName = "Gurj";
-        string SupplierContact = "something";
-        string SupplierActivity = "yes";
-        string SupplierDate = DateTime.Now.ToShortDateString();
-        string SupplierShippingTime = "5";
-        string SupplierPostCode = "LE5 2ER";
-        
+        string supplierId = "12b";
+        string supplierName = "Gurj";
+        string supplierContact = "something";
+        string supplierActivity = "yes";
+        string supplierDate = DateTime.Now.ToShortDateString();
+        string supplierShippingTime = "5";
+        string supplierPostCode = "LE5 2ER";
+
 
 
         [TestMethod]
@@ -157,7 +157,7 @@ namespace Testing4
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
-        
+
         [TestMethod]
         public void TestSupplierPostCodeFound()
         {
@@ -222,33 +222,33 @@ namespace Testing4
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void ValidMethodOK()     
+        public void ValidMethodOK()
         {
             //create an instance of Supplier class
             clsSupplier ASupplier = new clsSupplier();
             //string variable to store error message
-            String Error =  "";
+            String Error = "";
             //invoke the method
-            Error = ASupplier.Valid(SupplierName, SupplierDate, SupplierContact, SupplierShippingTime, SupplierPostCode);
+            Error = ASupplier.Valid(supplierName, supplierDate, supplierContact, supplierShippingTime, supplierPostCode);
             Assert.AreEqual(Error, "");
 
         }
         [TestMethod]
         public void SupplierPostCodeMinLessOne()
         {
-            //create an instance of the class we want to create
+            // create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
-            //string c=variable to store any error message
+            // string variable to store any error message
             String Error = "";
-            //create some test data to pass to the method
-            string SupplierPostCode = "";
-            //invoke the method
-            Error = ASupplier.Valid(SupplierPostCode, SupplierName, SupplierDate, SupplierContact, SupplierShippingTime);
-            //test to see that the result is correct
+            // create some test data to pass to the method
+            string supplierPostCode = "";
+          
+            Error = ASupplier.Valid(supplierName, supplierDate, supplierContact, supplierShippingTime, supplierPostCode);
+            // test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
-    }
 
+    }
 }
 
 
