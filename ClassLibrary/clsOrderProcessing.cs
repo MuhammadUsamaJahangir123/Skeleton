@@ -54,7 +54,7 @@ namespace ClassLibrary
                 mTotalAmount = value;
             }
         }
-        public Int32 OrderID {
+        public Int32 OrderId {
             get
             { //this line of code sends data out of the property
                 return mOrderId;
@@ -65,7 +65,7 @@ namespace ClassLibrary
                 mOrderId = value;
             }
         }
-        public int CustomerID {
+        public int CustomerId {
             get
             { //this line of code sends data out of the property
                 return mCustomerId;
@@ -76,7 +76,7 @@ namespace ClassLibrary
                 mCustomerId = value;
             }
         }
-        public int StaffID {
+        public int StaffId {
             get
             { //this line of code sends data out of the property
                 return mStaffId;

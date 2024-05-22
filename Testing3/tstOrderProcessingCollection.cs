@@ -28,9 +28,9 @@ namespace Testing3
             //add an Item to the lsit of test data
             clsOrderProcessing TestItem = new clsOrderProcessing();
             //set its properties
-            TestItem.OrderID = 1;
-            TestItem.CustomerID = 2;
-            TestItem.StaffID = 3;
+            TestItem.OrderId = 1;
+            TestItem.CustomerId = 2;
+            TestItem.StaffId = 3;
             TestItem.TotalAmount = 25m;
             TestItem.ShippingStatus = true;
             TestItem.OrderDate = DateTime.Now;
@@ -51,9 +51,9 @@ namespace Testing3
             //create some test data to assign to property
             clsOrderProcessing TestOrderProcessing = new clsOrderProcessing();
             //set the properties of the test object
-            TestOrderProcessing.OrderID = 1;
-            TestOrderProcessing.CustomerID = 2;
-            TestOrderProcessing.StaffID = 3;
+            TestOrderProcessing.OrderId = 1;
+            TestOrderProcessing.CustomerId = 2;
+            TestOrderProcessing.StaffId = 3;
             TestOrderProcessing.TotalAmount = 25m;
             TestOrderProcessing.ShippingStatus = true;
             TestOrderProcessing.OrderDate = DateTime.Now;
@@ -76,9 +76,9 @@ namespace Testing3
             //Create the item of test data
             clsOrderProcessing TestItem = new clsOrderProcessing();
             //set its properties
-            TestItem.OrderID = 1;
-            TestItem.CustomerID = 2;
-            TestItem.StaffID = 3;
+            TestItem.OrderId = 1;
+            TestItem.CustomerId = 2;
+            TestItem.StaffId = 3;
             TestItem.TotalAmount = 25m;
             TestItem.ShippingStatus = true;
             TestItem.OrderDate = DateTime.Now;
@@ -100,9 +100,9 @@ namespace Testing3
             clsOrderProcessing TestItem = new clsOrderProcessing();
             Int32 PrimaryKey = 0;
             //set its properties
-            TestItem.OrderID = 1;
-            TestItem.CustomerID = 4;
-            TestItem.StaffID = 3;
+            TestItem.OrderId = 1;
+            TestItem.CustomerId = 4;
+            TestItem.StaffId = 3;
             TestItem.TotalAmount = 25m;
             TestItem.ShippingStatus = true;
             TestItem.OrderDate = DateTime.Now;
@@ -112,7 +112,7 @@ namespace Testing3
             //add the record
             PrimaryKey = AllOrderProcessings.Add();
             //set the primary key of the test data
-            TestItem.OrderID = PrimaryKey;
+            TestItem.OrderId = PrimaryKey;
             //find the record
             AllOrderProcessings.ThisOrderProcessing.Find(PrimaryKey);
             //test to see that the two values are the same

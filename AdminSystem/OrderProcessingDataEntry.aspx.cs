@@ -37,17 +37,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress,TotalAmount);
         if (Error == "")
         {
+            //capture the CustomerId
+            AnOrderProcessing.CustomerId = Convert.ToInt32(CustomerId);
+            //capture the staffId
+            AnOrderProcessing.StaffId = Convert.ToInt32(StaffId);
             //capture the order date
             AnOrderProcessing.OrderDate = Convert.ToDateTime(OrderDate);
             //capture the ShippingAddress
             AnOrderProcessing.ShippingAddress = ShippingAddress;
+            //capture the shipping status
+            AnOrderProcessing.ShippingStatus = chkShippingStatus.Checked;
             //capture the TotalAmount
-            AnOrderProcessing.TotalAmount = TotalAmount;
-
-            //store the OrderProcessing in the session object
-            Session["AnOrderProcessing"] = AnOrderProcessing;
-            //navigate to the view page
-            Response.Redirect("OrderProcessingViewer.aspx");
+            AnOrderProcessing.TotalAmount = Convert.ToDecimal(TotalAmount);
+            //create a new instance of the address collection
+            clsOrderProcessingCollection OrderProcessingList = new clsOrderProcessingCollection();
+            //set the thisOrderProcessing property
+            OrderProcessingList.ThisOrderProcessing = AnOrderProcessing;
+            //add the new record
+            OrderProcessingList.Add();
+            //redirect back to the list page
+            Response.Redirect("OrderProcessingList.aspx");
+            
         }
         else
         {
@@ -91,9 +101,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Found == true)
         {
             //display the values of the properties in the form
-            txtCustomerId.Text = AnOrderProcessing.CustomerID.ToString();
+            txtCustomerId.Text = AnOrderProcessing.CustomerId.ToString();
             txtOrderDate.Text = AnOrderProcessing.OrderDate.ToString();
-            txtStaffId.Text = AnOrderProcessing.StaffID.ToString();
+            txtStaffId.Text = AnOrderProcessing.StaffId.ToString();
             txtTotalAmount.Text = AnOrderProcessing.TotalAmount.ToString();
             chkShippingStatus.Checked = AnOrderProcessing.ShippingStatus;
             txtShippingAddress.Text = AnOrderProcessing.ShippingAddress;

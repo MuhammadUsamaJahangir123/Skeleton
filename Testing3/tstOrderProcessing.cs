@@ -63,28 +63,28 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void OrderIDPropertyOK()
+        public void OrderIdPropertyOK()
         {
             //create an instance of the class we want to create
             clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            AnOrderProcessing.OrderID = TestData;
+            AnOrderProcessing.OrderId = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrderProcessing.OrderID, TestData);
+            Assert.AreEqual(AnOrderProcessing.OrderId, TestData);
         }
         [TestMethod]
-        public void CustomerIDPropertyOK()
+        public void CustomerIdPropertyOK()
         {
             //create an instance of the class we want to create
             clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            AnOrderProcessing.CustomerID = TestData;
+            AnOrderProcessing.CustomerId = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrderProcessing.CustomerID, TestData);
+            Assert.AreEqual(AnOrderProcessing.CustomerId, TestData);
         }
         [TestMethod]
         public void StaffIDPropertyOK()
@@ -94,9 +94,9 @@ namespace Testing3
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            AnOrderProcessing.StaffID = TestData;
+            AnOrderProcessing.StaffId = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrderProcessing.StaffID, TestData);
+            Assert.AreEqual(AnOrderProcessing.StaffId, TestData);
         }
 
         [TestMethod]
@@ -142,7 +142,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrderProcessing.Find(OrderId);
             //check the address id property
-            if (AnOrderProcessing.OrderID != 4)
+            if (AnOrderProcessing.OrderId != 4)
             {
                 OK = false;
             }
@@ -164,7 +164,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrderProcessing.Find(OrderId);
             //check the address id property
-            if (AnOrderProcessing.CustomerID != 11)
+            if (AnOrderProcessing.CustomerId != 11)
             {
                 OK = false;
             }
@@ -186,7 +186,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrderProcessing.Find(OrderId);
             //check the address id property
-            if (AnOrderProcessing.StaffID != 15)
+            if (AnOrderProcessing.StaffId != 15)
             {
                 OK = false;
             }
