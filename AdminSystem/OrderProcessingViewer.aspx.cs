@@ -15,9 +15,11 @@ public partial class _1Viewer : System.Web.UI.Page
         //get the datat from the session object
         AnOrderProcessing = (clsOrderProcessing)Session["AnOrderProcessing"];
         //Display the orderID for this entry
-        Response.Write(AnOrderProcessing.OrderID);
-        Response.Write(AnOrderProcessing.StaffID);
-        Response.Write(AnOrderProcessing.CustomerID);
+
+
+       // Response.Write(AnOrderProcessing.OrderID);
+       // Response.Write(AnOrderProcessing.StaffID);
+       // Response.Write(AnOrderProcessing.CustomerID);
         Response.Write(AnOrderProcessing.TotalAmount);
         Response.Write(AnOrderProcessing.OrderDate);
         Response.Write(AnOrderProcessing.ShippingStatus);
