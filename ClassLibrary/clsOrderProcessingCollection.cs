@@ -62,9 +62,9 @@ namespace ClassLibrary
                 //create a blank orderprocessing
                 clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
                 //read in the fields for the current record
-                AnOrderProcessing.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
-                AnOrderProcessing.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
-                AnOrderProcessing.StaffID = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
+                AnOrderProcessing.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
+                AnOrderProcessing.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
+                AnOrderProcessing.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
                 AnOrderProcessing.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
                 AnOrderProcessing.ShippingStatus = Convert.ToBoolean(DB.DataTable.Rows[Index]["ShippingStatus"]);
                 AnOrderProcessing.TotalAmount = Convert.ToDecimal(DB.DataTable.Rows[Index]["TotalAmount"]);
@@ -82,8 +82,8 @@ namespace ClassLibrary
             //set the primary key value of the new record
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
-            DB.AddParameter("@CustomrId", mThisOrderProcessing.CustomerID);
-            DB.AddParameter("@StaffId", mThisOrderProcessing.StaffID);
+            DB.AddParameter("@CustomerId", mThisOrderProcessing.CustomerId);
+            DB.AddParameter("@StaffId", mThisOrderProcessing.StaffId);
             DB.AddParameter("@OrderDate", mThisOrderProcessing.OrderDate);
             DB.AddParameter("@ShippingStatus", mThisOrderProcessing.ShippingStatus);
             DB.AddParameter("@ShippingAddress", mThisOrderProcessing.ShippingAddress);
