@@ -107,7 +107,7 @@ namespace Testing5
             //create a Boolean variable to store the resukts of the vLIDATIIN
             Boolean Found = false;
             //create some test data tp use with the method
-            Int32 ProductId = 21;
+            Int32 ProductId = 7;
             //invoke the method
             Found = AnStock.Find(ProductId);
             //test to see if the result is true
@@ -128,7 +128,7 @@ namespace Testing5
             //invoke the ethod
             Found = AnStock.Find(ProductId);
             //check the address id
-            if (AnStock.ProductId != 21)
+            if (AnStock.ProductId != 7)
             {
                 OK = false;
             }
@@ -145,11 +145,11 @@ namespace Testing5
             //create a boolean variable to reciord if the dat is ok - assume it is
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 21;
+            Int32 ProductId = 7;
             //invoke the method
             Found = AnStock.Find(ProductId);
             //check the dateadded property
-            if (AnStock.DateAdded != Convert.ToDateTime("21/05/2024"))
+            if (AnStock.DateAdded != Convert.ToDateTime("03/05/2024"))
             {
                 OK = false;
             }
@@ -166,11 +166,11 @@ namespace Testing5
             //create a boolean variable to record if the data is ok
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 21;
+            Int32 ProductId = 7;
             //invoke the method
             Found = AnStock.Find(ProductId);
             //check the restock property
-            if (AnStock.Restock != true)
+            if (AnStock.Restock != false)
             {
                 OK = false;
             }
@@ -187,7 +187,7 @@ namespace Testing5
             //create boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test dta to use with the method
-            Int32 ProductId = 21;
+            Int32 ProductId = 7;
             //invoke the mthod
             Found = AnStock.Find(ProductId);
             //check the active property
@@ -208,11 +208,11 @@ namespace Testing5
             //create boolean variable to record if data is ok
             Boolean OK = true;
             //create some test datat to use within the method 
-            Int32 ProductId = 21;
+            Int32 ProductId = 7;
             //invoke the method
             Found = AnStock.Find(ProductId);
             //check the productname property
-            if (AnStock.ProductName != "TestProductName")
+            if (AnStock.ProductName != "YellowCap")
             {
                 OK = false;
             }
@@ -229,10 +229,10 @@ namespace Testing5
             //create boolean variable to record if data is ok
             Boolean OK = true;
             //create some test data to use within the method
-            Int32 ProductId = 21;
+            Int32 ProductId = 7;
             Found = AnStock.Find(ProductId);
             //check the product price property
-            if (AnStock.ProductPrice != Convert.ToDecimal("25.70"))
+            if (AnStock.ProductPrice != Convert.ToDecimal("57"))
             {
                 OK= false;
             }
@@ -249,10 +249,10 @@ namespace Testing5
             //create boolean variable to record if data is ok
             Boolean OK = true;
             //create some test data to use within the method
-            Int32 ProductId = 21;
+            Int32 ProductId = 7;
             Found = AnStock.Find(ProductId);
             //check the stock quantity property
-            if (AnStock.StockQuantity != 232)
+            if (AnStock.StockQuantity != 17)
             {
                 OK= false;
             }
