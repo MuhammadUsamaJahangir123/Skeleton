@@ -12,7 +12,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //if this is the first time the page is displayed
-        customerID = Convert.ToInt32(Session["customerID"]);
+        customerID = Convert.ToInt32(Session["CustomerID"]);
         if (IsPostBack == false)
         {
             //if this is not a new record
