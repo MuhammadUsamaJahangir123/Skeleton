@@ -17,31 +17,59 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-
         clsSupplier ASupplier = new clsSupplier();
-        //capture Name
-        ASupplier.SupplierName = txtSupplierName.Text;
         //capture supplier Id
-        ASupplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
-        //Capture the date they joined
-        ASupplier.SupplierDate = Convert.ToDateTime(DateTime.Now);
-        //Capture their contact details
-        ASupplier.SupplierContact = txtSupplierContact.Text;
+        string supplierId = txtSupplierId.Text;
+        //capture name
+        string supplierName = txtSupplierName.Text; 
+        //capture date
+        string supplierDate = txtSupplierDAte.Text;
+        //capture contact
+        string supplierContact = txtSupplierContact.Text;
         //Capture active check box
-        ASupplier.SupplierActivity = chkActivity.Checked;
-        //Capture the postcode
-        ASupplier.SupplierPostCode = txtSupplierPostCode.Text;
-        //Capture the shipping time
-        ASupplier.SupplierShippingTime = Convert.ToInt32(txtSupplierShippingTime.Text);
+        string supplierActivity = chkActivity.Text;
+        //Capture postcode
+        string supplierPostCode = txtSupplierPostCode.Text;
+        //Capture Shipping Time
+        string supplierShippingTime = txtSupplierShippingTime.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate data
+        Error = ASupplier.Valid(supplierName, supplierDate, supplierContact, supplierPostCode);
+        if (Error == "")
 
 
-        //store the Values
-        Session["ASupplier"] = ASupplier;
-        //Navigate to the view page
-        Response.Redirect("SupplierViewer.aspx");
+        {
+
+            //capture Name
+            ASupplier.SupplierName = txtSupplierName.Text;
+            //capture supplier Id
+            ASupplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
+            //Capture the date they joined
+            ASupplier.SupplierDate = Convert.ToDateTime(DateTime.Now);
+            //Capture their contact details
+            ASupplier.SupplierContact = txtSupplierContact.Text;
+            //Capture active check box
+            ASupplier.SupplierActivity = chkActivity.Checked;
+            //Capture the postcode
+            ASupplier.SupplierPostCode = txtSupplierPostCode.Text;
+            //Capture the shipping time
+            ASupplier.SupplierShippingTime = Convert.ToInt32(txtSupplierShippingTime.Text);
+
+
+            //store the Values
+            Session["ASupplier"] = ASupplier;
+            //Navigate to the view page
+            Response.Redirect("SupplierViewer.aspx");
 
 
 
+        }
+        else
+        {
+            //display error message 
+            lblError.Text = Error;
+        }
     }
     protected void txtSupplierId_TextChanged(object sender, EventArgs e) { }
     protected void txtSupplierName_TextChanged(object sender, EventArgs e) { }
