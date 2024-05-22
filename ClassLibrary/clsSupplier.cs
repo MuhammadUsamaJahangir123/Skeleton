@@ -136,25 +136,66 @@ namespace ClassLibrary
 
        
 
-        public string Valid(string supplierName, string supplierDate, string supplierContact, string supplierShippingTime, string supplierPostCode)
+        public string Valid(string supplierName, string supplierDate, string supplierContact, string supplierPostCode)
         {
             // create a string variable to store the error
             String Error = "";
-
+            //create a temporary variable to store the date values
+            DateTime Datetemp;
             // Validation for PostCode: check if it's less than the minimum length
             if (supplierPostCode.Length == 0)
             {
-                Error = "The post code may not be blank : ";
+                Error = Error + "The post code may not be blank : ";
             }
 
             // Additional validation if needed for PostCode and other parameters
             if (supplierPostCode.Length > 9)
             {
-                Error = "The post code must be less than 9 characters : ";
+                Error = Error + "The post code must be less than 9 characters : ";
+            }
+            try
+            {
+                //copy the dateAdded value to Datetemp variable
+                Datetemp = Convert.ToDateTime(supplierDate);
+                //check to see if the date is less than todays date
+                if (Datetemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //copy the dateAdded value to Datetemp variable
+                Datetemp = Convert.ToDateTime(supplierDate);
+                //check to see if the date is less than todays date
+                if (Datetemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The data was not a valid date : ";
+            }
+            if (supplierName.Length == 0)
+            {
+                Error = Error + "The supplier name may not be blank : ";
             }
 
-            // Add other parameter validations if required
+            // Additional validation if needed for PostCode and other parameters
+            if (supplierName.Length > 50)
+            {
+                Error = Error + "The supplier name must be less than 50 characters : ";
+            }
+            if (supplierContact.Length == 0)
+            {
+                Error = Error + "The supplier name may not be blank : ";
+            }
 
+            // Additional validation if needed for PostCode and other parameters
+            if (supplierContact.Length > 50)
+            {
+                Error = Error + "The supplier name must be less than 50 characters : ";
+            }
+            
             // return any error messages
             return Error;
         }
