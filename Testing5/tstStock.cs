@@ -124,7 +124,7 @@ namespace Testing5
             //create a boolean variable to record if the data is oK - assume it is
             Boolean OK = true;
             //create som test data to use with the method
-            Int32 ProductId = 21;
+            Int32 ProductId = 7;
             //invoke the ethod
             Found = AnStock.Find(ProductId);
             //check the address id
@@ -149,7 +149,7 @@ namespace Testing5
             //invoke the method
             Found = AnStock.Find(ProductId);
             //check the dateadded property
-            if (AnStock.DateAdded != Convert.ToDateTime("03/05/2024"))
+            if (AnStock.DateAdded != Convert.ToDateTime("22/05/2024"))
             {
                 OK = false;
             }
@@ -170,7 +170,7 @@ namespace Testing5
             //invoke the method
             Found = AnStock.Find(ProductId);
             //check the restock property
-            if (AnStock.Restock != false)
+            if (AnStock.Restock != true)
             {
                 OK = false;
             }
