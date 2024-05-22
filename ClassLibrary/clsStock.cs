@@ -113,18 +113,40 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int productId)
+        /******** FIND METHOD***********/
+        public bool Find(int ProductId)
         {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter fore the product id to search for
+            DB.AddParameter("@ProductId", ProductId);
+            //execute the stored procedure
+            DB.Execute("sproc_tbStock_FilterByProductId");
+            //if one record is found , there shld b one or zero
+            if (DB.Count == 1)
             //set the priv data members to the test data value
-            mStockQuantity = 232;
-            mProductPrice = Convert.ToDecimal("25.70");
-            mProductName = "TestProductName";
-            mIsAvailable = true;
-            mRestock = true;
-            mProductId = 21;
-            mDateAdded = Convert.ToDateTime("21/05/2024");
-            //alwaysreturn true
-            return true;
+            {
+                //copy the fata from the DB to the priv data members
+                mStockQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["StockQuantity"]);
+                mProductPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["ProductPrice"]);
+                mProductName = Convert.ToString(DB.DataTable.Rows[0]["ProductName"]);
+                mIsAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["IsAvailable"]);
+                mRestock = Convert.ToBoolean(DB.DataTable.Rows[0]["Restock"]);
+                mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductId"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                //return that everythin worked ok
+                return true;
+            }
+            // if no record was found
+            else
+            {
+
+                //return false indicating there is a problem
+                return false;
+            }
+
+             
+            
         }
     }
 }
