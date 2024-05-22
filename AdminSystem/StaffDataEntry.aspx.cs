@@ -45,10 +45,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStaff.PhoneNo = PhoneNo;
             AnStaff.JoinedDate = Convert.ToDateTime(JoinedDate);
             AnStaff.Availability = chkAvailability.Checked;
-            //store the staff in the session object
-            Session["AnStaff"] = AnStaff;
-            //navigate to the view page
-            Response.Redirect("StaffViewer.aspx");
+            //create a new instance of the address collection
+            clsStaffCollection StaffList = new clsStaffCollection();
+            //set the ThisStaff property
+            StaffList.ThisStaff = AnStaff;
+            //add the new record
+            StaffList.Add();
+            //redirect back to the list page
+            Response.Redirect("StaffList.aspx");
         }
         else
         {

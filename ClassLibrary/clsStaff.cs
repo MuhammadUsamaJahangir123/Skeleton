@@ -186,7 +186,7 @@ namespace ClassLibrary
             catch
             {
                 //record the error
-                Error = Error + "The date was not a valid date: ";
+                Error = Error + "The date is not a valid date: ";
             }
 
 
