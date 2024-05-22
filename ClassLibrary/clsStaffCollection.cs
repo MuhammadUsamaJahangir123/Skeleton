@@ -111,5 +111,23 @@ namespace ClassLibrary
             return DB.Execute("sproc_tbStaff_Insert");
 
         }
+
+        public void Update()
+        {
+            //update an existing record based on the values of ThisStaff
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the new stored procedure
+            DB.AddParameter("@StaffID", mThisStaff.StaffID);
+            DB.AddParameter("@FirstName", mThisStaff.FirstName);
+            DB.AddParameter("@LastName", mThisStaff.LastName);
+            DB.AddParameter("@JoinedDate", mThisStaff.JoinedDate);
+            DB.AddParameter("@Availability", mThisStaff.Availability);
+            DB.AddParameter("@Email", mThisStaff.Email);
+            DB.AddParameter("@PhoneNo", mThisStaff.PhoneNo);
+
+            //execute the stored procedure
+            DB.Execute("sproc_tbStaff_Update");
+        }
     }
 }

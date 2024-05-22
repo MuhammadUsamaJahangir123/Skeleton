@@ -8,9 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the priamry key withpage level scope
+    Int32 StaffID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the address to be processed
+        StaffID = Convert.ToInt32(Session["StaffID"]);
+        if (IsPostBack == false)
+        {
+            //if tere is not a new record
+            if (StaffID != -1)
+            {
+                //display the current data for the record
+                DisplayStaff();
+            }
+        }
+    }
 
+    void DisplayStaff()
+    {
+        //create an instance of the staff
+        clsStaffCollection Staff = new clsStaffCollection();
+        //find the record to update
+        Staff.ThisStaff.Find(StaffID);
+
+
+
+        //////////////////////////////////////////////////////////
+
+        //////      Missing code        ///////
+
+        /////////////////////////////////////////////////////////////
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -88,4 +116,5 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
 
     }
+
 }
