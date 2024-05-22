@@ -31,14 +31,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStaffCollection Staff = new clsStaffCollection();
         //find the record to update
         Staff.ThisStaff.Find(StaffID);
-
-
-
-        //////////////////////////////////////////////////////////
-
-        //////      Missing code        ///////
-
-        /////////////////////////////////////////////////////////////
+        //display the data for the record
+        txtStaffID.Text = Staff.ThisStaff.StaffID.ToString();
+        txtFirstName.Text = Staff.ThisStaff.FirstName.ToString();
+        txtLastName.Text = Staff.ThisStaff.LastName.ToString();
+        txtJoinedDate.Text = Staff.ThisStaff.JoinedDate.ToString();
+        chkAvailability.Checked = Staff.ThisStaff.Availability;
+        txtEmail.Text = Staff.ThisStaff.Email.ToString();
+        txtPhoneNo.Text = Staff.ThisStaff.PhoneNo.ToString();
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -63,6 +63,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnStaff.Valid(FirstName, LastName, Email, PhoneNo, JoinedDate);
         if (Error == "")
         {
+            AnStaff.StaffID = StaffID;
             //capture the FIRSTNAME
             AnStaff.FirstName = FirstName;
             //capture the LASTNAME
@@ -75,12 +76,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStaff.Availability = chkAvailability.Checked;
             //create a new instance of the address collection
             clsStaffCollection StaffList = new clsStaffCollection();
-            //set the ThisStaff property
-            StaffList.ThisStaff = AnStaff;
-            //add the new record
-            StaffList.Add();
+
+            //if this is a new record i.e StaffID = -1 then add the data
+            if (StaffID == -1)
+            {
+                //set the ThisStaff property
+                StaffList.ThisStaff = AnStaff;
+                //add the new record
+                StaffList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                StaffList.ThisStaff.Find(StaffID);
+                //set the ThisStaff property
+                StaffList.ThisStaff = AnStaff;
+                //update the record
+                StaffList.Update();
+            }
             //redirect back to the list page
             Response.Redirect("StaffList.aspx");
+
         }
         else
         {
