@@ -146,7 +146,10 @@ namespace ClassLibrary
             }
 
              
-            
+        }
+        public string Valid(string productName, string ProductPrice, string StockQuantity, string DateAdded)
+        {
+            return "";
         }
     }
 }
