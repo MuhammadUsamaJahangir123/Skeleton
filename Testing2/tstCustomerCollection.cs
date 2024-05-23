@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,18 +45,18 @@ namespace Testing2
             //Test to see that the two values are the same
             Assert.AreEqual(AllCustomers.CustomerList, TestList);
         }
-       /** [TestMethod]
-        public void CountPropertyOK()
-        {
-            //create am instance of the class we want to create
-            clsCustomerCollection AllCustomers = new clsCustomerCollection();
-            //create some test data to assign to property
-            Int32 SomeCount = 2;
-            //assign the data to the property
-            AllCustomers.Count = SomeCount;
-            //test to see that the two values are the same 
-            Assert.AreEqual(AllCustomers.Count, SomeCount);
-        } **/
+        /** [TestMethod]
+         public void CountPropertyOK()
+         {
+             //create am instance of the class we want to create
+             clsCustomerCollection AllCustomers = new clsCustomerCollection();
+             //create some test data to assign to property
+             Int32 SomeCount = 2;
+             //assign the data to the property
+             AllCustomers.Count = SomeCount;
+             //test to see that the two values are the same 
+             Assert.AreEqual(AllCustomers.Count, SomeCount);
+         } **/
         [TestMethod]
         public void ThisCustomerPropertyOK()
         {
@@ -82,7 +83,7 @@ namespace Testing2
             //create am instance of the class we want to create
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
             //create some test data to assign to property
-          
+
             //in this case the data needs to be a list of objects
             List<clsCustomer> TestList = new List<clsCustomer>();
             //add an item to the list
@@ -141,7 +142,7 @@ namespace Testing2
 
         }
         [TestMethod]
-        public void UpdateMethodOK() 
+        public void UpdateMethodOK()
         {
             //create an instance of the class we want to create
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
@@ -179,6 +180,87 @@ namespace Testing2
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
 
         }
-    } 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties 
+            TestItem.customerID = 1;
+            TestItem.subscribe = true;
+            TestItem.firstName = "Jonny";
+            TestItem.lastName = "Lenon";
+            TestItem.PhoneNo = "07404535912";
+            TestItem.joinedDate = DateTime.Now;
+            TestItem.email = "JonnyLenon@gmail.com";
+            //set the primary key of the test data
+            TestItem.customerID = PrimaryKey;
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //now delete the record
+            AllCustomers.Delete();
+            //now find the record
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //Test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportByfirstNameMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create an instance of the the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection(); ;
+            //apply a blank string (should return all records);
+            FilteredCustomers.ReportByfirstName("");
+            //test to see that the two values are the same 
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+
+        }
+        [TestMethod]
+        public void ReportByfirstNameNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a customer first name that doesnt exist
+            FilteredCustomers.ReportByfirstName("Jimmy");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredCustomers.Count);
+
+        }
+        [TestMethod]
+        public void ReportByfirstNameTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a firstName that doesnt exist
+            FilteredCustomers.ReportByfirstName("Laila");
+            //check that the correct number of records are found
+            if (FilteredCustomers.Count == 2)
+            {
+                //check to see that the first record is Jonny
+                if (FilteredCustomers.CustomerList[0].customerID != 25)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 26
+                if (FilteredCustomers.CustomerList[1].customerID != 26)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+    }
 }
 
