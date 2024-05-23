@@ -39,6 +39,7 @@
         <asp:Label ID="lblPhoneNo" runat="server" style="z-index: 1; left: 14px; top: 276px; position: absolute" Text="PhoneNo"></asp:Label>
         <asp:TextBox ID="txtPhoneNo" runat="server" OnTextChanged="txtPhoneNo_TextChanged" style="z-index: 1; left: 109px; top: 276px; position: absolute"></asp:TextBox>
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 316px; top: 47px; position: absolute; width: 56px" Text="Find" />
+        <asp:Button ID="btnReturnMainMenu" runat="server" OnClick="btnReturnMainMenu_Click" style="z-index: 1; left: 256px; top: 495px; position: absolute" Text="Return to Main Menu" />
     </form>
 </body>
 </html>
