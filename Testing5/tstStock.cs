@@ -7,6 +7,15 @@ namespace Testing5
     [TestClass]
     public class tstStock
     {
+
+
+        //good test data
+        //create some test data to pass the method
+        string ProductName = "Ashcap";
+        string ProductPrice = "28.90";
+        string StockQuantity = "98";
+        string DateAdded = DateTime.Now.ToShortDateString();
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -257,7 +266,20 @@ namespace Testing5
                 OK= false;
             }
             Assert.IsTrue(OK);
-
         }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //string variable to store any error msg
+            string Error = "";
+            //invoke the method 
+            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        
+
     }
 }
