@@ -1,3 +1,5 @@
-﻿Build started at 17:54...
-========== Build: 0 succeeded, 0 failed, 2 up-to-date, 0 skipped ==========
-========== Build completed at 17:54 and took 00.378 seconds ==========
+﻿Build started at 17:42...
+1>------ Build started: Project: TestingCustomer, Configuration: Debug Any CPU ------
+1>  TestingCustomer -> H:\Team Alpha\Week5 Lab2\Testing2\bin\Debug\Testing2.dll
+========== Build: 1 succeeded, 0 failed, 1 up-to-date, 0 skipped ==========
+========== Build completed at 17:42 and took 00.800 seconds ==========
