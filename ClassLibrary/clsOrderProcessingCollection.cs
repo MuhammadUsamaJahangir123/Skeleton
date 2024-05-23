@@ -91,5 +91,32 @@ namespace ClassLibrary
             return DB.Execute("sproc_tborders_Insert");
         }
 
+        public void Update()
+        {
+            //update an existing record based on the values of thisOrderProcessing
+            //connect to the database
+            clsDataConnection DB =new clsDataConnection();
+            //set the parameters for the new stored procedure
+            DB.AddParameter("@OrderId", mThisOrderProcessing.OrderId);
+            DB.AddParameter("@CustomerId", mThisOrderProcessing.CustomerId);
+            DB.AddParameter("@StaffId", mThisOrderProcessing.StaffId);
+            DB.AddParameter("@OrderDate", mThisOrderProcessing.OrderDate);
+            DB.AddParameter("@ShippingStatus", mThisOrderProcessing.ShippingStatus);
+            DB.AddParameter("@ShippingAddress", mThisOrderProcessing.ShippingAddress);
+            DB.AddParameter("@TotalAmount", mThisOrderProcessing.TotalAmount);
+            //execute the stored procedure
+            DB.Execute("sproc_tborders_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisorderprocessing
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //Set the parameter for the stored procedure
+            DB.AddParameter("OrderId", mThisOrderProcessing.OrderId);
+            //execute the stored procedure
+            DB.Execute("sproc_tborders_Delete");
+        }
     }
 }

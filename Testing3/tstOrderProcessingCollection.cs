@@ -63,7 +63,7 @@ namespace Testing3
             //Test to see that the two values are the same
             Assert.AreEqual(AllOrderProcessings.ThisOrderProcessing, TestOrderProcessing);
         }
-        
+
         [TestMethod]
         public void ListAndCountOK()
         {
@@ -120,5 +120,79 @@ namespace Testing3
 
 
         }
+        [TestMethod]
+        public void UpdateMethodOK() { 
+
+        //create an instance of the class we want to create
+        clsOrderProcessingCollection AllOrderProcessings = new clsOrderProcessingCollection();
+        //create the item of test data
+        clsOrderProcessing TestItem = new clsOrderProcessing();
+        //variable to store the primary key
+        Int32 PrimaryKey = 0;
+        //set its properties
+        TestItem.CustomerId = 4;
+        TestItem.StaffId = 3;
+        TestItem.TotalAmount = 25m;
+        TestItem.ShippingStatus = true;
+        TestItem.OrderDate = DateTime.Now;
+        TestItem.ShippingAddress = "beststreet";
+        //set thisOrderProcessing to the test data
+        AllOrderProcessings.ThisOrderProcessing = TestItem;
+        //add the record
+        PrimaryKey = AllOrderProcessings.Add();
+        //set the primary key of the test data
+        TestItem.OrderId = PrimaryKey;
+        //modify the test record
+        TestItem.CustomerId = 12;
+        TestItem.StaffId = 9;
+        TestItem.TotalAmount = 75m;
+        TestItem.ShippingStatus = false;
+        TestItem.OrderDate = DateTime.Now;
+        TestItem.ShippingAddress = "worststreet";
+        //set the record based on the new test data
+        AllOrderProcessings.ThisOrderProcessing = TestItem;
+        //update the record
+        AllOrderProcessings.Update();
+        //find the record
+        AllOrderProcessings.ThisOrderProcessing.Find(PrimaryKey);
+        //test to see if thisOrderProcessing matches the test data
+        Assert.AreEqual(AllOrderProcessings.ThisOrderProcessing, TestItem);
+        }
+
+        [TestMethod]
+        public void DeleteMethod() 
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessingCollection AllOrderProcessings = new clsOrderProcessingCollection();
+            //create the item of test data
+            clsOrderProcessing TestItem = new clsOrderProcessing();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.OrderId = 1;
+            TestItem.CustomerId = 4;
+            TestItem.StaffId = 3;
+            TestItem.TotalAmount = 25m;
+            TestItem.ShippingStatus = true;
+            TestItem.OrderDate = DateTime.Now;
+            TestItem.ShippingAddress = "beststreet";
+            //set thisOrderProcessing to the test data
+            AllOrderProcessings.ThisOrderProcessing = TestItem;
+            //add the record
+            PrimaryKey = AllOrderProcessings.Add();
+            //set the primary key of the test data
+            TestItem.OrderId = PrimaryKey;
+            //find the record
+            AllOrderProcessings.ThisOrderProcessing.Find(PrimaryKey);
+            //delete the record
+            AllOrderProcessings.Delete();
+            //now find the record
+            Boolean Found = AllOrderProcessings.ThisOrderProcessing.Find(PrimaryKey);
+            //test ti see that the record was not found
+            Assert.IsFalse(Found);
+
+
+        }
+
     }
 }
