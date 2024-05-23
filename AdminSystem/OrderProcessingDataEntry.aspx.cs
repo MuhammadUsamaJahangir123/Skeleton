@@ -9,9 +9,20 @@ using System.Web.UI.WebControls;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the Order o be processed
+        OrderId = Convert.ToInt32(Session["OrderId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (OrderId != -1)
+            {
+                //display the current data for the record
+                DisplayOrderProcessing();
+            }
+        }
 
     }
 
@@ -36,7 +47,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //validate the data
         Error = AnOrderProcessing.Valid(OrderDate,ShippingAddress,TotalAmount);
         if (Error == "")
-        {
+        {   //capture the OrderId
+            AnOrderProcessing.OrderId = Convert.ToInt32(OrderId);
             //capture the CustomerId
             AnOrderProcessing.CustomerId = Convert.ToInt32(CustomerId);
             //capture the staffId
@@ -51,10 +63,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrderProcessing.TotalAmount = Convert.ToDecimal(TotalAmount);
             //create a new instance of the address collection
             clsOrderProcessingCollection OrderProcessingList = new clsOrderProcessingCollection();
-            //set the thisOrderProcessing property
-            OrderProcessingList.ThisOrderProcessing = AnOrderProcessing;
-            //add the new record
-            OrderProcessingList.Add();
+            //if this is a new record i.e. OrderId = -1 then add the data
+            if (OrderId == -1)
+            {
+                //set the ThisOrderProcessing property
+                OrderProcessingList.ThisOrderProcessing = AnOrderProcessing;
+                //add the new record
+                OrderProcessingList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                OrderProcessingList.ThisOrderProcessing.Find(OrderId);
+                //set the ThisOrderProcessing Property
+                OrderProcessingList.ThisOrderProcessing = AnOrderProcessing;
+                //update the record
+                OrderProcessingList.Update();
+
+            }
             //redirect back to the list page
             Response.Redirect("OrderProcessingList.aspx");
             
@@ -114,5 +141,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
             lblError.Text = "Order ID not found";
         }
 
+    }
+
+    void DisplayOrderProcessing()
+    {
+        //create an instance of the address book
+        clsOrderProcessingCollection OrderProcessingBook = new clsOrderProcessingCollection();
+        //find the record to update
+        OrderProcessingBook.ThisOrderProcessing.Find(OrderId);
+        //display the data for the record
+        txtOrderId.Text = OrderProcessingBook.ThisOrderProcessing.OrderId.ToString();
+        txtCustomerId.Text = OrderProcessingBook.ThisOrderProcessing.CustomerId.ToString();
+        txtStaffId.Text = OrderProcessingBook.ThisOrderProcessing.StaffId.ToString();
+        txtOrderDate.Text = OrderProcessingBook.ThisOrderProcessing.OrderDate.ToString();
+        txtTotalAmount.Text = OrderProcessingBook.ThisOrderProcessing.TotalAmount.ToString();
+        chkShippingStatus.Checked = OrderProcessingBook.ThisOrderProcessing.ShippingStatus;
+        txtShippingAddress.Text = OrderProcessingBook.ThisOrderProcessing.OrderId.ToString();
     }
 }

@@ -17,11 +17,12 @@ public partial class _1Viewer : System.Web.UI.Page
         //Display the orderID for this entry
 
 
-       // Response.Write(AnOrderProcessing.OrderID);
-       // Response.Write(AnOrderProcessing.StaffID);
-       // Response.Write(AnOrderProcessing.CustomerID);
+        Response.Write(AnOrderProcessing.OrderId);
+        Response.Write(AnOrderProcessing.StaffId);
+        Response.Write(AnOrderProcessing.CustomerId);
         Response.Write(AnOrderProcessing.TotalAmount);
         Response.Write(AnOrderProcessing.OrderDate);
         Response.Write(AnOrderProcessing.ShippingStatus);
+        Response.Write(AnOrderProcessing.ShippingAddress);
     }
 }
