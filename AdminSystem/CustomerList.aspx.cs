@@ -61,4 +61,59 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record fromt he list to edit";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be deleted
+        Int32 customerID;
+        //if a  record has been selected from the list
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record delete
+            customerID = Convert.ToInt32(lstCustomerList.SelectedValue);
+            //store the data in the session object
+            Session["customerID"] = customerID;
+            //redirect to the delete page
+            Response.Redirect("CustomerConfirmDelete.aspx");
+        }
+        else //if no record has been selected 
+        {
+            //display an error message 
+            lblError.Text = "Please select a record from the list to delete";
+        }
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the cusomter object
+        clsCustomerCollection AnCustomer = new clsCustomerCollection();
+        //retrieve the value of post code from the presentation layer
+        AnCustomer.ReportByfirstName(txtEnterfirstName.Text);
+        //set the data source to the list of customers in the collection
+        lstCustomerList.DataSource = AnCustomer.CustomerList;
+        //set the name of the primary key
+        lstCustomerList.DataValueField = "customerID";
+        //set the name of the field to display 
+        lstCustomerList.DataTextField = "firstName";
+        //bind the data to the list
+        lstCustomerList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of  the customer object
+        clsCustomerCollection AnCustomer = new clsCustomerCollection();
+        //set an emtpy string
+        AnCustomer.ReportByfirstName("");
+        //clear any existing filter to tidy up the interface 
+        txtEnterfirstName.Text = "";
+        //set the data source to the list of customers in the collection
+        lstCustomerList.DataSource = AnCustomer.CustomerList;
+        //set the name of the primary key
+        lstCustomerList.DataValueField = "customerID";
+        //set the name of the field to display 
+        lstCustomerList.DataTextField = "firstName";
+        //bind the data to the list
+        lstCustomerList.DataBind();
+    }
 }
