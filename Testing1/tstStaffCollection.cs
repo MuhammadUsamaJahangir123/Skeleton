@@ -139,6 +139,7 @@ namespace Testing1
 
 
         ///////////////////     Practical 13B       //////////////////
+        [TestMethod]
         public void UpdateMethodOK()
         {
             //create an instance of the class we want to create
@@ -180,6 +181,104 @@ namespace Testing1
             Assert.AreEqual(AllStaffs.ThisStaff, TestItem);
 
 
+        }
+
+
+
+        /////////////////////       Practical 14A       /////////////
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            //create the item of test data
+            clsStaff TestItem = new clsStaff();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Availability = true;
+            TestItem.StaffID = 1;
+            TestItem.FirstName = "Jenson";
+            TestItem.LastName = "Button";
+            TestItem.JoinedDate = DateTime.Now;
+            TestItem.Email = "Jen.Butt12@gmail.com";
+            TestItem.PhoneNo = "07812645801";
+
+            //set ThisStaff to the test data
+            AllStaffs.ThisStaff = TestItem;
+            //add the record
+            PrimaryKey = AllStaffs.Add();
+            //set the primary key of the test data
+            TestItem.StaffID = PrimaryKey;
+            //find the record
+            AllStaffs.ThisStaff.Find(PrimaryKey);
+            //delete the record
+            AllStaffs.Delete();
+            //now find the record
+            Boolean Found = AllStaffs.ThisStaff.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+
+
+
+        ///////////////////     PRACTICAL 14B       //////////////////
+        [TestMethod]
+        public void ReportByLastNameMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            //create an instance of the filtered data
+            clsStaffCollection FilteredStaffs = new clsStaffCollection();
+            //apply a blank string (should return all record)
+            FilteredStaffs.ReportByLastName("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStaffs.Count, FilteredStaffs.Count);
+        }
+
+
+        [TestMethod]
+        public void ReportByLastNameNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection FilteredStaffs = new clsStaffCollection();
+            //apply a Last Name that doesn't exist
+            FilteredStaffs.ReportByLastName("Falcon");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStaffs.Count);
+        }
+
+
+
+        [TestMethod]
+        public void ReportByLastNameTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsStaffCollection FilteredStaffs = new clsStaffCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a Last Name that doesn't exist
+            FilteredStaffs.ReportByLastName("Button");
+            //check that the correct number of records are found
+            if (FilteredStaffs.Count == 2)
+            {
+                //check to see that the first record is 25
+                if (FilteredStaffs.StaffList[0].StaffID != 25)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 26
+                if (FilteredStaffs.StaffList[1].StaffID != 26)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
         }
 
         
