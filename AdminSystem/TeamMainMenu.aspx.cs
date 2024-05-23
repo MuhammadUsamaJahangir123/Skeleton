@@ -11,4 +11,10 @@ public partial class TeamMainMenu : System.Web.UI.Page
     {
 
     }
+
+    protected void btnCustomers_Click(object sender, EventArgs e)
+    {
+        //redirect the user to the address book login page 
+        Response.Redirect("CustomerLogin.aspx");
+    }
 }

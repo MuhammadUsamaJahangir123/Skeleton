@@ -18,6 +18,12 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayCustomers();
         }
+        //create new instance of clsUustomerUser
+        clsCustomerUser AnUser = new clsCustomerUser();
+        //get data from the session object
+        AnUser = (clsCustomerUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
         void DisplayCustomers()
         {
@@ -115,5 +121,11 @@ public partial class _1_List : System.Web.UI.Page
         lstCustomerList.DataTextField = "firstName";
         //bind the data to the list
         lstCustomerList.DataBind();
+    }
+
+    protected void btnReturnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
