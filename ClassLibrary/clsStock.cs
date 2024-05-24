@@ -147,9 +147,18 @@ namespace ClassLibrary
 
              
         }
-        public string Valid(string productName, string ProductPrice, string StockQuantity, string DateAdded)
+        public string Valid(string productName, string productPrice, string stockQuantity, string dateAdded)
         {
-            return "";
+            //create a string variable to store the error
+            String Error = "";
+            //if the productname is blank
+            if (ProductName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Product Name may not be blank : ";
+            }
+            //return any error msg
+            return Error;
         }
     }
 }
