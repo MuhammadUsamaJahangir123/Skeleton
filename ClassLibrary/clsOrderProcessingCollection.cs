@@ -118,5 +118,51 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tborders_Delete");
         }
+
+        public void ReportByShippingAddress(string ShippingAddress)
+        {
+            //filters the records based on a full or partial post code
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the ShippingAddress parameter to the database
+            DB.AddParameter("@ShippingAddress", ShippingAddress);
+            //execute the stored procedure
+            DB.Execute("sproc_tborders_FilterByShippingAddress");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array lsit based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //varibale to store the record count
+            Int32 RecordCount = 0;
+            //get the count of records
+            RecordCount = DB.Count;
+            //CLEAR THE PRIVATE ARRAY LIST
+            mOrderProcessingList = new List<clsOrderProcessing>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank Shipping Address object
+                clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+                //read in the fields for the current record 
+                AnOrderProcessing.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
+                AnOrderProcessing.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
+                AnOrderProcessing.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
+                AnOrderProcessing.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
+                AnOrderProcessing.ShippingStatus = Convert.ToBoolean(DB.DataTable.Rows[Index]["ShippingStatus"]);
+                AnOrderProcessing.TotalAmount = Convert.ToDecimal(DB.DataTable.Rows[Index]["TotalAmount"]);
+                AnOrderProcessing.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingAddress"]);
+
+                //addd the record to the private data member
+                mOrderProcessingList.Add(AnOrderProcessing);
+                //point at the next record
+                Index++;
+
+            }
+        }
     }
 }

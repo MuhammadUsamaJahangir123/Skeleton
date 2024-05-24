@@ -87,4 +87,40 @@ public partial class _1_List : System.Web.UI.Page
 
         }
     }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        //create an instance of the OrderProcessing object
+        clsOrderProcessingCollection AnOrderProcessing = new clsOrderProcessingCollection();
+        //retrieve the value of post code from the presentation layer
+        AnOrderProcessing.ReportByShippingAddress(txtInput.Text);
+        //set the data source to the list of shipping addresses in the collection
+        lstOrderProcessingList.DataSource = AnOrderProcessing.OrderProcessingList;
+        //set the name of the primary key
+        lstOrderProcessingList.DataValueField = "OrderId";
+        //set the name of the field to display
+        lstOrderProcessingList.DataTextField = "ShippingAddress";
+        //bind the data to the list
+        lstOrderProcessingList.DataBind();
+
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        //create an instance of the OrderProcessing object
+        clsOrderProcessingCollection AnOrderProcessing = new clsOrderProcessingCollection();
+        //set an empty string
+        AnOrderProcessing.ReportByShippingAddress("");
+        //clear any existing filter to tidy up the interface
+        txtInput.Text = "";
+        //set the data source to the list of orderprocessing in the collection
+        lstOrderProcessingList.DataSource = AnOrderProcessing.OrderProcessingList;
+        //set the name of the primary key
+        lstOrderProcessingList.DataValueField = "OrderId";
+        //set the name of the field to display
+        lstOrderProcessingList.DataTextField = "ShippingAddress";
+        //bind the data to the list
+        lstOrderProcessingList.DataBind();
+
+    }
 }
