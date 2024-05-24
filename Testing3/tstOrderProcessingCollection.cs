@@ -194,5 +194,61 @@ namespace Testing3
 
         }
 
+        [TestMethod]
+        public void ReportByShippingAddressMethodOK()
+        {
+            //create an instance of the cass containting unfiltered results
+            clsOrderProcessingCollection AllOrderProcessings = new clsOrderProcessingCollection();
+            //create an instance of the filtered data
+            clsOrderProcessingCollection FilteredShippingAddress = new clsOrderProcessingCollection();
+            //apply a blank string (should return all records);
+            FilteredShippingAddress.ReportByShippingAddress("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllOrderProcessings.Count, FilteredShippingAddress.Count);
+
+        }
+
+        [TestMethod]
+        public void ReportByShippingAddressNoneFound() 
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessingCollection FilteredOrderProcessings = new clsOrderProcessingCollection();
+            //apply a Shipping address that doesnt exist
+            FilteredOrderProcessings.ReportByShippingAddress("xxx xxx");
+            //test to see that there are no records 
+            Assert.AreEqual(0, FilteredOrderProcessings.Count);
+        }
+
+        [TestMethod]
+        public void ReportByShippingAddressTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsOrderProcessingCollection FilteredShippingAddresses = new clsOrderProcessingCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a ShippingAddress that doesnt exist
+            FilteredShippingAddresses.ReportByShippingAddress("teststreet");
+            //check that the correct number of records are found
+            if (FilteredShippingAddresses.Count == 2)
+            {
+                //check to see that the first record is 27
+                if (FilteredShippingAddresses.OrderProcessingList[0].OrderId != 27)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 29
+                if (FilteredShippingAddresses.OrderProcessingList[1].OrderId != 29)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
+
     }
 }
