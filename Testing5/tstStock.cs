@@ -280,7 +280,7 @@ namespace Testing5
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public ProductNameMinLessOne()
+        public void ProductNameMinLessOne()
         {
             //create an instance of the class we wnt to create
             clsStock AnStock = new clsStock();
