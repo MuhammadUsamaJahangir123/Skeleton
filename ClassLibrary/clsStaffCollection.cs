@@ -58,10 +58,7 @@ namespace ClassLibrary
         //constructor for the class
         public clsStaffCollection()
         {
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
+            
             //object for the data connect
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
@@ -121,15 +118,15 @@ namespace ClassLibrary
             DB.Execute("sproc_tbStaff_Delete");
         }
 
-        public void ReportByLastName(string LastName)
+        public void ReportByEmail(string Email)
         {
             //filters the records based on a full or partial Last Name
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
-            //send the LastName parameter to the database
-            DB.AddParameter("@LastName", LastName);
+            //send the Email parameter to the database
+            DB.AddParameter("@Email", Email);
             //execute the stored procedure
-            DB.Execute("sproc_tbStaff_FilterByLastName");
+            DB.Execute("sproc_tbStaff_FilterByEmail");
             //populate the array list with the data table
             PopulateArray(DB);
         }
@@ -163,7 +160,7 @@ namespace ClassLibrary
                 AnStaff.PhoneNo = Convert.ToString(DB.DataTable.Rows[Index]["PhoneNo"]);
 
                 //add the record to the private data member
-                mStaffList.Add( AnStaff );
+                mStaffList.Add(AnStaff);
                 //point at the next record
                 Index++;
 

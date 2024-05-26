@@ -224,26 +224,26 @@ namespace Testing1
 
         ///////////////////     PRACTICAL 14B       //////////////////
         [TestMethod]
-        public void ReportByLastNameMethodOK()
+        public void ReportByEmailMethodOK()
         {
             //create an instance of the class containing unfiltered results
             clsStaffCollection AllStaffs = new clsStaffCollection();
             //create an instance of the filtered data
             clsStaffCollection FilteredStaffs = new clsStaffCollection();
             //apply a blank string (should return all record)
-            FilteredStaffs.ReportByLastName("");
+            FilteredStaffs.ReportByEmail("");
             //test to see that the two values are the same
             Assert.AreEqual(AllStaffs.Count, FilteredStaffs.Count);
         }
 
 
         [TestMethod]
-        public void ReportByLastNameNoneFound()
+        public void ReportByEmailNoneFound()
         {
             //create an instance of the class we want to create
             clsStaffCollection FilteredStaffs = new clsStaffCollection();
-            //apply a Last Name that doesn't exist
-            FilteredStaffs.ReportByLastName("Falcon");
+            //apply an Email that doesn't exist
+            FilteredStaffs.ReportByEmail("gam1l.com");
             //test to see that there are no records
             Assert.AreEqual(0, FilteredStaffs.Count);
         }
@@ -251,24 +251,24 @@ namespace Testing1
 
 
         [TestMethod]
-        public void ReportByLastNameTestDataFound()
+        public void ReportByEmailTestDataFound()
         {
             //create an instance of the filtered data
             clsStaffCollection FilteredStaffs = new clsStaffCollection();
             //variable to store the outcome
             Boolean OK = true;
-            //apply a Last Name that doesn't exist
-            FilteredStaffs.ReportByLastName("Button");
+            //apply an Email 
+            FilteredStaffs.ReportByEmail("Muh_Us11@yahoo.com");
             //check that the correct number of records are found
             if (FilteredStaffs.Count == 2)
             {
-                //check to see that the first record is 25
-                if (FilteredStaffs.StaffList[0].StaffID != 5)
+                //check to see that the first record is 115
+                if (FilteredStaffs.StaffList[0].StaffID != 115)
                 {
                     OK = false;
                 }
-                //check to see that the first record is 26
-                if (FilteredStaffs.StaffList[1].StaffID != 6)
+                //check to see that the first record is 116
+                if (FilteredStaffs.StaffList[1].StaffID != 116)
                 {
                     OK = false;
                 }
