@@ -16,6 +16,13 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayStaffs();
         }
+
+        //create a new instance of the clsStaffUser
+        clsStaffUser AnUser = new clsStaffUser();
+        //get data from the session object
+        AnUser = (clsStaffUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
 
     void DisplayStaffs()
@@ -89,13 +96,13 @@ public partial class _1_List : System.Web.UI.Page
         //create an instance of the staff object
         clsStaffCollection AnStaff = new clsStaffCollection();
         //retrieve the value of Last Name from the presentation layer
-        AnStaff.ReportByLastName(txtEnterLastName.Text);
+        AnStaff.ReportByEmail(txtEnterEmail.Text);
         //set the data source to the list of Staffs in the collection
         lstStaffList.DataSource = AnStaff.StaffList;
         //set the name of the primary key
         lstStaffList.DataValueField = "StaffID";
         //set the name of the field to display
-        lstStaffList.DataTextField = "LastName";
+        lstStaffList.DataTextField = "Email";
         //bind the data to the list
         lstStaffList.DataBind();
     }
@@ -105,16 +112,22 @@ public partial class _1_List : System.Web.UI.Page
         //create an instance of the staff object
         clsStaffCollection AnStaff = new clsStaffCollection();
         //set an empty string
-        AnStaff.ReportByLastName("");
+        AnStaff.ReportByEmail("");
         //clear any existing filter to tidy up the interface
-        txtEnterLastName.Text = "";
+        txtEnterEmail.Text = "";
         //set the data source to the list of staffs in the collection
         lstStaffList.DataSource = AnStaff.StaffList;
         //set the name of the primary key
         lstStaffList.DataValueField = "StaffID";
         //set the name of the field to display
-        lstStaffList.DataTextField = "LastName";
+        lstStaffList.DataTextField = "Email";
         //bind the data to the list
         lstStaffList.DataBind();
+    }
+
+    protected void btnReturnToMainMenu2_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
