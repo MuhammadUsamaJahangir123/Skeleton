@@ -359,5 +359,35 @@ namespace Testing5
             Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
             Assert.AreEqual(Error, "");
         }
+        [TestMethod]
+        public void ProductNameMacPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //string variable to store any error msg
+            String Error = "";
+            //create some test datat to pass the method
+            string ProductName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //shld fail
+            //invoke the mthod
+            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductNameExtremeMax()
+        {
+            //create an instnce of the class we want to create
+            clsStock AnStock = new clsStock();
+            //string variab;le to store any error msg
+            String Error = "";
+            //create some test data to pass the method
+            string ProductName = "";
+            ProductName = ProductName.PadRight(500, 'a'); // this shld fail
+            //invoke the method
+            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            //test shld see if result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
     }
 }
