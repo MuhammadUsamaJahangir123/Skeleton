@@ -152,10 +152,16 @@ namespace ClassLibrary
             //create a string variable to store the error
             String Error = "";
             //if the productname is blank
-            if (ProductName.Length == 0)
+            if (productName.Length == 0)
             {
                 //record the error
                 Error = Error + "The Product Name may not be blank : ";
+            }
+            //if the productname is greater than 50
+            if (productName.Length > 50)
+            {
+                //record the rror
+                Error = Error + "The prodduct name must be less than 50 characters : ";
             }
             //return any error msg
             return Error;
