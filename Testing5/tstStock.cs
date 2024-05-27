@@ -12,8 +12,6 @@ namespace Testing5
         //good test data
         //create some test data to pass the method
         string ProductName = "Ashcap";
-        string ProductPrice = "28.90";
-        string StockQuantity = "98";
         string DateAdded = DateTime.Now.ToShortDateString();
 
         [TestMethod]
@@ -498,6 +496,7 @@ namespace Testing5
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
+        
     }
 } 
 

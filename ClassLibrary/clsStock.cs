@@ -148,7 +148,7 @@ namespace ClassLibrary
 
              
         }
-        public string Valid(string productName, string productPrice, string stockQuantity, string dateAdded)
+        public string Valid(string productName, string dateAdded)
         {
             //create a string variable to store the error
             String Error = "";
@@ -191,6 +191,8 @@ namespace ClassLibrary
                 //record the errpr
                 Error = Error + "The Date was not a valid date : ";
             }
+            //return any error msgs
+            return Error;
             
         }
     }
