@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 
 namespace ClassLibrary
 {
@@ -151,6 +152,8 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
             //if the productname is blank
             if (productName.Length == 0)
             {
@@ -161,10 +164,34 @@ namespace ClassLibrary
             if (productName.Length > 50)
             {
                 //record the rror
-                Error = Error + "The prodduct name must be less than 50 characters : ";
+                Error = Error + "The product name must be less than 50 characters : ";
             }
-            //return any error msg
-            return Error;
+            //CreateInstanceBinder an instance of date tiime t compare wit datetemp
+            //in the if statements
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+                //copy the dateadded value t the datetemp  variable
+                DateTemp = Convert.ToDateTime(dateAdded);
+
+                if (DateTemp < DateComp) //comparen dateadded wth date
+                {
+                    //record the error
+                    Error = Error + "The Date Cannot be in the past : ";
+                }
+                //checkto see if the faye is greater than todays date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the errpr
+                Error = Error + "The Date was not a valid date : ";
+            }
+            
         }
     }
 }

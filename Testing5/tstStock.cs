@@ -388,6 +388,116 @@ namespace Testing5
             //test shld see if result is correct
             Assert.AreNotEqual(Error, "");
         }
+        [TestMethod]
+        public void DateAddedExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //string variable to store any error msg
+            String Error = "";
+            //create a vriable to store the dest date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            //test to c that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedMin()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            //test to c that the result is correct
+            Assert.AreNotEqual(Error, "");
 
+        }
+        [TestMethod]
+        public void DateAddedMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            //test to c that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the date variable to a string variable 
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            //test to c that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedInvalidData()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //string variable to store any error msg
+            String Error = "";
+            //set the ate added to a non data value
+            string DateAdded = "this is not a date!";
+            //invoke the method
+            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
-}
+} 
+
