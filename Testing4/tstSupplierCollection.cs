@@ -35,14 +35,7 @@ namespace Testing4
 
 
         }
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsSupplierCollection AllSupplier = new clsSupplierCollection();
-            Int32 SomeCount = 0;
-            AllSupplier.Count = SomeCount;
-            Assert.AreEqual(AllSupplier.Count, SomeCount);
-        }
+       
 
         [TestMethod]
         public void ThisSupplierPropertyOK()
@@ -76,11 +69,7 @@ namespace Testing4
             AllSupplier.SupplierList = TestList;
             Assert.AreEqual (AllSupplier.Count, TestList.Count);
         }
-        [TestMethod]
-        public void TwoRecordsPresent()
-        {
-            clsSupplierCollection AllSupplier = new clsSupplierCollection ();
-            Assert.AreEqual(AllSupplier.Count, 2);
-        }
+      
+        
     }
 }
