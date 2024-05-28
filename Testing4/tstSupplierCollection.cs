@@ -85,8 +85,37 @@ namespace Testing4
             AllSupplier.ThisSupplier = TestItem;
             PrimaryKey = AllSupplier.Add();
             AllSupplier.ThisSupplier.Find(PrimaryKey);
+            Assert.AreEqual(AllSupplier.ThisSupplier, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsSupplierCollection AllSupplier = new clsSupplierCollection();
+            clsSupplier TestItem = new clsSupplier();
+            Int32 PrimaryKey = 0;
+            TestItem.SupplierName = "Gurj";
+            TestItem.SupplierContact = "Gurj@gmail.com";
+            TestItem.SupplierDate = DateTime.Now;
+            TestItem.SupplierPostCode = "LE5 4EX";
+            TestItem.SupplierActivity = true;
+            TestItem.SupplierShippingTime = 1;
+            AllSupplier.ThisSupplier = TestItem;
+            PrimaryKey = AllSupplier.Add();
+            TestItem.SupplierId = PrimaryKey;
+            TestItem.SupplierActivity = false;
+            TestItem.SupplierShippingTime = 5;
+            TestItem.SupplierContact = "Alex@gmail.com";
+            TestItem.SupplierDate = DateTime.Now;
+            TestItem.SupplierPostCode = "LE7 3EX";
+            TestItem.SupplierName = "Alex";
+            AllSupplier.ThisSupplier = TestItem;
+            AllSupplier.Update();
+            AllSupplier.ThisSupplier.Find(PrimaryKey);
             Assert.AreEqual (AllSupplier.ThisSupplier, TestItem);
         }
+        
+
       
         
     }

@@ -8,10 +8,17 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 SupplierId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
-
+        SupplierId = Convert.ToInt32(Session["SupplierId"]);
+        if (IsPostBack == false)
+        {
+            if (SupplierId != -1)
+            {
+                DisplaySupplier();
+            }
+        }
 
     }
 
@@ -40,7 +47,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
         {
-
+            ASupplier.SupplierId = SupplierId;
             //capture Name
             ASupplier.SupplierName = txtSupplierName.Text;
             //capture supplier Id
@@ -56,17 +63,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //Capture the shipping time
             ASupplier.SupplierShippingTime = Convert.ToInt32(supplierShippingTime);
             clsSupplierCollection SupplierList = new clsSupplierCollection();
-            SupplierList.ThisSupplier = ASupplier;
-            SupplierList.Add();
+
+            if (SupplierId == -1)
+            {
+                SupplierList.ThisSupplier = ASupplier;
+                SupplierList.Add();
+            }
+            else
+            {
+                SupplierList.ThisSupplier.Find(SupplierId);
+                SupplierList.ThisSupplier =  ASupplier;
+                SupplierList.Update();
+            }
             Response.Redirect("SupplierList.aspx");
-
-
-            //store the Values
-            Session["ASupplier"] = ASupplier;
-            //Navigate to the view page
-            Response.Redirect("SupplierViewer.aspx");
-
-
 
         }
         else
@@ -149,6 +158,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
         }
+
+    }
+    void DisplaySupplier()
+    {
+        clsSupplierCollection Supplier = new clsSupplierCollection();
+        Supplier.ThisSupplier.Find(SupplierId);
+        txtSupplierId.Text = Supplier.ThisSupplier.SupplierId.ToString();
+        txtSupplierName.Text = Supplier.ThisSupplier.SupplierName.ToString();
+        txtSupplierPostCode.Text = Supplier.ThisSupplier.SupplierPostCode.ToString();
+        txtSupplierShippingTime.Text = Supplier.ThisSupplier.SupplierShippingTime.ToString();
+        txtSupplierContact.Text = Supplier.ThisSupplier.SupplierContact.ToString();
+        txtSupplierDAte.Text = Supplier.ThisSupplier.SupplierDate.ToString();
+        chkActivity.Checked = Supplier.ThisSupplier.SupplierActivity;
 
     }
 }
