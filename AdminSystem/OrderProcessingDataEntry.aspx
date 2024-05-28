@@ -37,6 +37,7 @@
         </p>
         <asp:Label ID="lblShippingAddress" runat="server" style="z-index: 1; left: 6px; top: 228px; position: absolute" Text="Shipping Address"></asp:Label>
         <asp:TextBox ID="txtShippingAddress" runat="server" Height="22px" style="z-index: 1; left: 139px; top: 220px; position: absolute" Width="128px"></asp:TextBox>
+        <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" style="z-index: 1; left: 179px; top: 344px; position: absolute" Text="Return to Main Menu" />
     </form>
 </body>
 </html>

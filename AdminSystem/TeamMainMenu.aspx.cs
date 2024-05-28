@@ -23,4 +23,10 @@ public partial class TeamMainMenu : System.Web.UI.Page
         //redirect the user to the Staff Login Page
         Response.Redirect("StaffLogin.aspx");
     }
+
+    protected void btnOrderProcessing_Click(object sender, EventArgs e)
+    {
+        //redirect to main menu
+        Response.Redirect("OrderProcessingLogin.aspx");
+    }
 }
