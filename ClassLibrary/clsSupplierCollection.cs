@@ -97,6 +97,13 @@ namespace ClassLibrary
 
              DB.Execute("sproc_tbSupplier_Update");
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierId", mThisSupplier.SupplierId);
+            DB.Execute("sproc_tbSupplier_Delete");
+        }
     }
 
 
