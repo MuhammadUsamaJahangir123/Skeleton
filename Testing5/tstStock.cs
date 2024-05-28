@@ -273,7 +273,7 @@ namespace Testing5
             //string variable to store any error msg
             string Error = "";
             //invoke the method 
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName, DateAdded);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -287,7 +287,7 @@ namespace Testing5
             //create some test dtata to pass the method
             string ProductName = ""; // this shld trigger an error
             //invoke the method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName, DateAdded);
             //test to see that the result i scorrect
             Assert.AreNotEqual(Error, "");
         }
@@ -300,7 +300,7 @@ namespace Testing5
             //create some test data to pass the method
             string ProductName = "a"; //thi shld b 
             //invoke yhe method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName, DateAdded);
             //test to see that res is coorrect
             Assert.AreEqual(Error, "");
         }
@@ -314,7 +314,7 @@ namespace Testing5
             //creTE SOME TEST DATAT TO PASS TO THE METHOD
             string ProductName = "aa"; //shld b ok
             //invoke the method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName, DateAdded);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -328,7 +328,7 @@ namespace Testing5
             //create sm test data to pass the method
             string ProductName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName, DateAdded);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -341,7 +341,7 @@ namespace Testing5
             //create sm test data to pass the method
             string ProductName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName,  DateAdded);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -354,7 +354,7 @@ namespace Testing5
             //create sm test data to pass the method
             string ProductName = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
             //invoke the method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName,  DateAdded);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -367,7 +367,7 @@ namespace Testing5
             //create some test datat to pass the method
             string ProductName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //shld fail
             //invoke the mthod
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName,  DateAdded);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -382,7 +382,7 @@ namespace Testing5
             string ProductName = "";
             ProductName = ProductName.PadRight(500, 'a'); // this shld fail
             //invoke the method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName, DateAdded);
             //test shld see if result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -402,7 +402,7 @@ namespace Testing5
             //convert the date variable to a string variable
             string DateAdded = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName, DateAdded);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -421,7 +421,7 @@ namespace Testing5
             //convert the date variable to string variable
             string DateAdded = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName, DateAdded);
             //test to c that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -430,6 +430,7 @@ namespace Testing5
         {
             //create an instance of the class we want to create
             clsStock AnStock = new clsStock();
+            //string variable to store error msg
             String Error = "";
             //create a variable to store the test date data
             DateTime TestDate;
@@ -438,9 +439,9 @@ namespace Testing5
             //convert the date variable to string variable
             string DateAdded = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName, DateAdded);
             //test to c that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
 
         }
         [TestMethod]
@@ -458,7 +459,7 @@ namespace Testing5
             //convert the date variable to string variable
             string DateAdded = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName, DateAdded);
             //test to c that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -478,7 +479,7 @@ namespace Testing5
             //convert the date variable to a string variable 
             string DateAdded = TestDate.ToString();
             //invoke the method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName, DateAdded);
             //test to c that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -492,7 +493,7 @@ namespace Testing5
             //set the ate added to a non data value
             string DateAdded = "this is not a date!";
             //invoke the method
-            Error = AnStock.Valid(ProductName, ProductPrice, StockQuantity, DateAdded);
+            Error = AnStock.Valid(ProductName, DateAdded);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
