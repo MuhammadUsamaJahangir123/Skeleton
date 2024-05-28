@@ -69,9 +69,19 @@ namespace ClassLibrary
 
         }
 
- 
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierActivity", mThisSupplier.SupplierActivity);
+            DB.AddParameter("@SupplierPostCode", mThisSupplier.SupplierPostCode);
+            DB.AddParameter("@SupplierName", mThisSupplier.SupplierName);
+            DB.AddParameter("@SupplierShippingTime", mThisSupplier.SupplierShippingTime);
+            DB.AddParameter("@SupplierContact", mThisSupplier.SupplierContact);
+            DB.AddParameter("@SupplierDate", mThisSupplier.SupplierDate);
 
 
+            return DB.Execute("sproc_tbSupplier_Insert");
+        }
     }
 
 
