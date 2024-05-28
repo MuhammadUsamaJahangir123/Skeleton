@@ -46,7 +46,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture supplier Id
             ASupplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
             //Capture the date they joined
-            ASupplier.SupplierDate = Convert.ToDateTime(DateTime.Now);
+            ASupplier.SupplierDate = Convert.ToDateTime(supplierDate);
             //Capture their contact details
             ASupplier.SupplierContact = txtSupplierContact.Text;
             //Capture active check box
@@ -54,7 +54,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //Capture the postcode
             ASupplier.SupplierPostCode = txtSupplierPostCode.Text;
             //Capture the shipping time
-            ASupplier.SupplierShippingTime = Convert.ToInt32(txtSupplierShippingTime.Text);
+            ASupplier.SupplierShippingTime = Convert.ToInt32(supplierShippingTime);
+            clsSupplierCollection SupplierList = new clsSupplierCollection();
+            SupplierList.ThisSupplier = ASupplier;
+            SupplierList.Add();
+            Response.Redirect("SupplierList.aspx");
 
 
             //store the Values
