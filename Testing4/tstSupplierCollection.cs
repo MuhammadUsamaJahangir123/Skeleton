@@ -105,7 +105,7 @@ namespace Testing4
             TestItem.SupplierId = PrimaryKey;
             TestItem.SupplierActivity = false;
             TestItem.SupplierShippingTime = 5;
-            TestItem.SupplierContact = "Alex@gmail.com";
+            TestItem.SupplierContact = "Alexsx@gmail.com";
             TestItem.SupplierDate = DateTime.Now;
             TestItem.SupplierPostCode = "LE7 3EX";
             TestItem.SupplierName = "Alex";
