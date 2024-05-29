@@ -47,25 +47,9 @@ namespace ClassLibrary
         }
         public clsSupplierCollection()
         {
-
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tbSupplier_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount) 
-            {
-                clsSupplier ASupplier = new clsSupplier();
-                ASupplier.SupplierActivity = Convert.ToBoolean(DB.DataTable.Rows[Index]["SupplierActivity"]);
-                ASupplier.SupplierContact = Convert.ToString(DB.DataTable.Rows[Index]["SupplierContact"]);
-                ASupplier.SupplierName = Convert.ToString(DB.DataTable.Rows[Index]["SupplierName"]);
-                ASupplier.SupplierPostCode = Convert.ToString(DB.DataTable.Rows[Index]["SupplierPostCode"]);
-                ASupplier.SupplierId = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierId"]);
-                ASupplier.SupplierShippingTime = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierShippingTIme"]);
-                ASupplier.SupplierDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["SupplierDate"]);
-                mSupplierList.Add(ASupplier);
-                Index++;
-            }
+            PopulateArray(DB);
 
         }
 
@@ -103,6 +87,37 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@SupplierId", mThisSupplier.SupplierId);
             DB.Execute("sproc_tbSupplier_Delete");
+        }
+
+        public void ReportByPostCode(string PostCode)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierPostCode", PostCode);
+            DB.Execute("sproc_tbSupplier_FilterByPostCode");
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mSupplierList = new List<clsSupplier>();
+            while (Index < RecordCount)
+            {
+                clsSupplier ASupplier = new clsSupplier();
+                ASupplier.SupplierActivity = Convert.ToBoolean(DB.DataTable.Rows[Index]["SupplierActivity"]);
+                ASupplier.SupplierContact = Convert.ToString(DB.DataTable.Rows[Index]["SupplierContact"]);
+                ASupplier.SupplierName = Convert.ToString(DB.DataTable.Rows[Index]["SupplierName"]);
+                ASupplier.SupplierPostCode = Convert.ToString(DB.DataTable.Rows[Index]["SupplierPostCode"]);
+                ASupplier.SupplierId = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierId"]);
+                ASupplier.SupplierShippingTime = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierShippingTIme"]);
+                ASupplier.SupplierDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["SupplierDate"]);
+                mSupplierList.Add(ASupplier);
+                Index++;
+
+
+            }
+
         }
     }
 

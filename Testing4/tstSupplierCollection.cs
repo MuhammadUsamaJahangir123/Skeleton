@@ -136,9 +136,71 @@ namespace Testing4
             Boolean Found = AllSupplier.ThisSupplier.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
-        
+        [TestMethod]
+        public void ReportByPostCodeMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsSupplierCollection AllSupplier = new clsSupplierCollection();
+            //create an instance of the filtered data
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+            //apply a blank string (should return all record)
+            FilteredSuppliers.ReportByPostCode("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllSupplier.Count, FilteredSuppliers.Count);
+        }
 
-      
-        
+
+        [TestMethod]
+        public void ReportByPostCodeNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+            //apply an Email that doesn't exist
+            FilteredSuppliers.ReportByPostCode("LE55AA");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredSuppliers.Count);
+        }
+
+
+
+        [TestMethod]
+        public void ReportByPostCodeTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply an Email 
+            FilteredSuppliers.ReportByPostCode("LE5 5ED");
+            //check that the correct number of records are found
+            if (FilteredSuppliers.Count == 2)
+            {
+                //check to see that the first record is 1
+                if (FilteredSuppliers.SupplierList[0].SupplierId != 1)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 27
+                if (FilteredSuppliers.SupplierList[1].SupplierId != 27)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
+
+
+
+
     }
+
+
+
+
 }
+
