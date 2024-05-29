@@ -60,4 +60,3 @@ public partial class SupplierLogin : System.Web.UI.Page
         Response.Redirect("TeamMainMenu.aspx");
     }
 }
-}
