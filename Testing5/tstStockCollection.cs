@@ -44,18 +44,6 @@ namespace Testing5
             Assert.AreEqual(AllStocks.StockList, TestList);    
         }
         [TestMethod]
-        public void CountPropertyOK()
-        {
-            //create an instance of the class we want to create
-            clsStockCollection AllStocks = new clsStockCollection();
-            //create some test data to assign to the property
-            Int32 SomeCount = 0;
-            //assign the data to the property
-            AllStocks.Count = SomeCount;
-            //test to aee that the two values are the same
-            Assert.AreEqual(AllStocks.Count, SomeCount);
-        }
-        [TestMethod]
         public void ThisStockPropertyOK()
         {
             //create an instance of the classs we want to create
@@ -102,5 +90,6 @@ namespace Testing5
             //test to c that the values r the same
             Assert.AreEqual(AllStocks.Count, TestList.Count);
         }
+
     }
 }
