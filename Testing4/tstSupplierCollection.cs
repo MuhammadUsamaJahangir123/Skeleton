@@ -156,7 +156,7 @@ namespace Testing4
             //create an instance of the class we want to create
             clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
             //apply an Email that doesn't exist
-            FilteredSuppliers.ReportByPostCode("LE55AA");
+            FilteredSuppliers.ReportByPostCode("LE99AA");
             //test to see that there are no records
             Assert.AreEqual(0, FilteredSuppliers.Count);
         }
