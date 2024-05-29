@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
+
 public partial class _1_List : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -60,6 +61,28 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "Please select a record from the list to delete";
         }
+
+    }
+
+    protected void Applybtn_Click(object sender, EventArgs e)
+    {
+        clsSupplierCollection ASupplier = new clsSupplierCollection();
+        ASupplier.ReportByPostCode(txtFilter.Text);
+        lstSupplierList.DataSource = ASupplier.SupplierList;
+        lstSupplierList.DataValueField = "SupplierId";
+        lstSupplierList.DataTextField = "SupplierPostCode";
+        lstSupplierList.DataBind();
+    }
+
+    protected void Clearbtn_Click(object sender, EventArgs e)
+    {
+        clsSupplierCollection ASupplier = new clsSupplierCollection();
+        ASupplier.ReportByPostCode("");
+        txtFilter.Text = "";
+        lstSupplierList.DataSource = ASupplier.SupplierList;
+        lstSupplierList.DataValueField = "SupplierId";
+        lstSupplierList.DataTextField = "SupplierPostCode";
+        lstSupplierList.DataBind();
 
     }
 }
