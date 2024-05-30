@@ -23,8 +23,8 @@
         <asp:CheckBox ID="chkIsAvailable" runat="server" style="z-index: 1; left: 419px; top: 133px; position: absolute; height: 26px" Text="Available" />
         <asp:CheckBox ID="chkRestock" runat="server" style="z-index: 1; left: 419px; top: 179px; position: absolute; height: 26px" Text="Restock" width="76px" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 15px; top: 464px; position: absolute; right: 1405px"></asp:Label>
-        <asp:Button ID="btnOK" runat="server" height="27px" OnClick="btnOK_Click" style="z-index: 1; top: 504px; position: absolute; width: 70px; right: 1404px" Text="OK" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 504px; position: absolute; width: 70px; height: 27px; right: 1308px" Text="Cancel" />
+        <asp:Button ID="btnOK" runat="server" height="27px" OnClick="btnOK_Click" style="z-index: 1; top: 506px; position: absolute; width: 70px; left: 56px;" Text="OK" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 507px; position: absolute; width: 70px; height: 27px; right: 1197px" Text="Cancel" />
         <p>
             &nbsp;</p>
         <p>

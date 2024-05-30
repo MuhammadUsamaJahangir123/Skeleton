@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Runtime.Remoting.Channels;
+using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ClassLibrary
 {
@@ -9,6 +11,8 @@ namespace ClassLibrary
     {
         //private data member for the list
         List<clsStock> mStockList = new List<clsStock>();
+        //priate vmember data for this stock
+        clsStock mThisStock = new clsStock();
 
         //public property for the STock List
         public List<clsStock> StockList
@@ -38,7 +42,36 @@ namespace ClassLibrary
                 //worry abt l8r
             }
         }
-        public clsStock ThisStock { get; set; }
+        public int Add()
+        {
+            //adds a record to the DB based on the values of mThisStock
+            //connect to the DB
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedures
+            DB.AddParameter("@ProductName", mThisStock.ProductName);
+            DB.AddParameter("@ProductPrice", mThisStock.ProductPrice);
+            DB.AddParameter("@StockQuantity", mThisStock.StockQuantity);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            DB.AddParameter("@IsAvailable", mThisStock.IsAvailable);
+            DB.AddParameter("@Restock", mThisStock.Restock);
+
+            //execute the query returning the pk value
+            return DB.Execute("sproc_tbStock_Insert");
+
+        }
+        public clsStock ThisStock
+        {
+            get
+            {
+                //return the private data
+                return mThisStock;
+            }
+            set
+            {
+                //set the private data
+                mThisStock = value;
+            }
+        }
 
         //constructor for the class
         public clsStockCollection()
@@ -73,6 +106,8 @@ namespace ClassLibrary
 
 
             }
+
+            
         }
         
     }

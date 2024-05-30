@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,24 +18,47 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsStock
         clsStock AnStock = new clsStock();
-        //capture the Product Name
-        AnStock.ProductName = txtProductName.Text;
-        //capture the product price
-        AnStock.ProductPrice = Convert.ToDecimal(txtProductPrice.Text);
-        //capture the stock quantity
-        AnStock.StockQuantity = Convert.ToInt32(txtStockQuantity.Text);
-        //capture the date added
-        AnStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
-        //capture the availbility
-        AnStock.IsAvailable = chkIsAvailable.Checked;
-        //capture the restock
-        AnStock.Restock = chkRestock.Checked;
-        //capture the product id
-        AnStock.ProductId = Convert.ToInt32(txtProductId.Text);
-        //store the stock in the session object
-        Session["AnStock"] = AnStock;
-        //navigate to the view page
-        Response.Redirect("StockViewer.aspx");
+
+        string ProductId = txtProductId.Text;
+        string ProductName = txtProductName.Text;
+        string ProductPrice = txtProductPrice.Text;
+        string StockQuantity = txtStockQuantity.Text;
+        string DateAdded = txtDateAdded.Text;
+        string IsAvailable  = chkIsAvailable.Text;
+        string Resttock = chkRestock.Text;
+        //variable to store any error msgs
+        string Error = "";
+        //validate the data
+        Error = AnStock.Valid(ProductName, DateAdded);
+        if (Error == "")
+        { 
+            //capture the Product Name
+            AnStock.ProductName = ProductName;
+            //capture the product price
+            AnStock.ProductPrice = Convert.ToDecimal(ProductPrice);
+            //capture the stock quantity
+            AnStock.StockQuantity = Convert.ToInt32(StockQuantity);
+            //capture the date added
+            AnStock.DateAdded = Convert.ToDateTime(DateAdded);
+            //capture the availbility
+            AnStock.IsAvailable = chkIsAvailable.Checked;
+            //capture the restock
+            AnStock.Restock = chkRestock.Checked;
+            //capture the product id
+            AnStock.ProductId = Convert.ToInt32(ProductId);
+            //create a new instance of stock collection
+            clsStockCollection StockList =new clsStockCollection();
+            //set the This Stock property
+            StockList.ThisStock =  AnStock;
+            //add the new record
+            StockList.Add();
+            //navigate to the List page
+            Response.Redirect("StockListViewer.aspx");
+        }
+
+
+
+       
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
