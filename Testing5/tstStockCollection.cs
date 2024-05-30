@@ -90,6 +90,34 @@ namespace Testing5
             //test to c that the values r the same
             Assert.AreEqual(AllStocks.Count, TestList.Count);
         }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.ProductId = 1;
+            TestItem.ProductName = "BlueCap";
+            TestItem.ProductPrice = Convert.ToDecimal("26.00");
+            TestItem.StockQuantity = 7;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.IsAvailable = true;
+            TestItem.Restock = true;
+            //set this stokc to the test data
+            AllStocks.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStocks.Add();
+            //set the pk of the test data
+            TestItem.ProductId = PrimaryKey;
+            //fid the record
+            AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStocks.ThisStock, TestItem);
+        }
 
     }
 }
