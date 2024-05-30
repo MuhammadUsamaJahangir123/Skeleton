@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Testing5
 {
@@ -118,6 +119,43 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AllStocks.ThisStock, TestItem);
         }
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStocks = new clsStockCollection();
+            //new item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the pk
+            Int32 PrimaryKey = 0;
+            //set its properrties
+            TestItem.ProductName = "BlueCap";
+            TestItem.ProductPrice = Convert.ToDecimal("26.00");
+            TestItem.StockQuantity = 7;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.IsAvailable = true;
+            TestItem.Restock = true;
+            //set this stock to test data
+            AllStocks.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStocks.Add();
+            //set the pk of the test data
+            TestItem.ProductId = PrimaryKey;
+            //modify the test record
+            TestItem.ProductName = "OrangeCap";
+            TestItem.ProductPrice = Convert.ToDecimal("37.00");
+            TestItem.StockQuantity = 7;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.IsAvailable = true;
+            TestItem.Restock = true;
+            //set the record based on new tes data
+            AllStocks.ThisStock = TestItem;
+            AllStocks.Update();
+            //fimd the record
+            AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see if ThisStock matches the test data
+            Assert.AreEqual(AllStocks.ThisStock, TestItem);
+        }
+
 
     }
 }

@@ -5,6 +5,9 @@ namespace ClassLibrary
 {
     public class clsStock
     {
+       
+
+
         //private data member for the date added property
         private DateTime mDateAdded;
         //dateAdded public property
@@ -25,7 +28,7 @@ namespace ClassLibrary
         //private data member for the product id property
         private Int32 mProductId;
         //ProductId public property
-        public int ProductId
+        public Int32 ProductId
         {
             get
             {
