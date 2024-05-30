@@ -50,10 +50,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //create a new instance of clsStock
+        //create a new instance of clsStock 
         clsStock AnStock = new clsStock();
 
-        string ProductId = txtProductId.Text;
+        int ProductId = Convert.ToInt32(txtProductId.Text);
         string ProductName = txtProductName.Text;
         string ProductPrice = txtProductPrice.Text;
         string StockQuantity = txtStockQuantity.Text;
