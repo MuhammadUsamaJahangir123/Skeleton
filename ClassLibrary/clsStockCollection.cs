@@ -59,6 +59,24 @@ namespace ClassLibrary
             return DB.Execute("sproc_tbStock_Insert");
 
         }
+
+        public void Update()
+        {
+            //update an existing record based on the values of thisStock
+            //connect to the DB
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the new stored proced
+            DB.AddParameter("@ProductId", mThisStock.ProductId);
+            DB.AddParameter("@IsAvailable", mThisStock.IsAvailable);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            DB.AddParameter("@ProductName", mThisStock.ProductName);
+            DB.AddParameter("@ProductPrice", mThisStock.ProductPrice);
+            DB.AddParameter("@StockQuantity", mThisStock.StockQuantity);
+            DB.AddParameter("@Restock", mThisStock.Restock);
+            //execute the stored proced
+            DB.Execute("sproc_tbStock_Update");
+        }
+
         public clsStock ThisStock
         {
             get

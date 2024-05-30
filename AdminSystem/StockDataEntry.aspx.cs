@@ -9,10 +9,44 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to sotore the PK w page lvl scope
+    Int32 ProductId;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get  the numb pf the stock to be processed
+        ProductId = Convert.ToInt32(Session["ProductId"]);
+        if (IsPostBack == false)
+        {
+            //if this is the not a new record
+            if (ProductId != -1)
+            {
+                //display the current data for the record
+                DisplayStock();
+            }
+        }
+
 
     }
+
+    void DisplayStock()
+    {
+        //create an instance of the stock book
+        clsStockCollection Stock = new clsStockCollection();
+        //find the record to update
+        Stock.ThisStock.Find(ProductId);
+        //display the data for the record
+        txtProductId.Text = Stock.ThisStock.ProductId.ToString();
+        txtProductName.Text = Stock.ThisStock.ProductName.ToString();
+        txtProductPrice.Text = Stock.ThisStock.ProductPrice.ToString();
+        txtStockQuantity.Text = Stock.ThisStock.StockQuantity.ToString();
+        txtDateAdded.Text = Stock.ThisStock.DateAdded.ToString();
+        chkIsAvailable.Checked = Stock.ThisStock.IsAvailable;
+        chkRestock.Checked = Stock.ThisStock.Restock;
+
+
+    }
+
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
@@ -31,7 +65,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //validate the data
         Error = AnStock.Valid(ProductName, DateAdded);
         if (Error == "")
-        { 
+        {
+            //capture the product id
+            AnStock.ProductId = ProductId;
             //capture the Product Name
             AnStock.ProductName = ProductName;
             //capture the product price
@@ -44,21 +80,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStock.IsAvailable = chkIsAvailable.Checked;
             //capture the restock
             AnStock.Restock = chkRestock.Checked;
-            //capture the product id
-            AnStock.ProductId = Convert.ToInt32(ProductId);
             //create a new instance of stock collection
-            clsStockCollection StockList =new clsStockCollection();
-            //set the This Stock property
-            StockList.ThisStock =  AnStock;
-            //add the new record
-            StockList.Add();
+            clsStockCollection StockList = new clsStockCollection();
+
+            //if this is a new record i.e proudctid = -1 then add the data
+            if (ProductId == -1)
+            {
+                //set the This Stock property
+                StockList.ThisStock = AnStock;
+                //add the new record
+                StockList.Add();
+
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update 
+                StockList.ThisStock.Find(ProductId);
+                //set the this stock property
+                StockList.ThisStock = AnStock;
+                //update the record
+                StockList.Update();
+            }
+
             //navigate to the List page
-            Response.Redirect("StockListViewer.aspx");
+            Response.Redirect("StockList.aspx");
         }
-
-
-
-       
+        else
+        {
+            //display the error msg
+            lblError.Text = Error;
+        }
+     
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
