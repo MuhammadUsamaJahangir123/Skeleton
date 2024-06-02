@@ -15,7 +15,8 @@ namespace Testing3
             //test to see that it exists
             Assert.IsNotNull(AnUser);
         }
-
+        
+        [TestMethod]
         public void UserIDPropertyOK()
         {
             //create an instance of the class we want to create

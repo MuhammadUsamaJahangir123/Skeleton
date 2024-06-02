@@ -159,6 +159,10 @@ namespace ClassLibrary
                 Error = Error + "The total price cannot be less than 0 :";
             }
 
+
+
+
+
             //create an instance of datetime to compare with datetemp
             //in the if statements
             DateTime DateComp = DateTime.Now.Date;
