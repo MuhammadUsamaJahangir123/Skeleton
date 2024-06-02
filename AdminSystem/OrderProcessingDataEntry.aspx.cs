@@ -28,16 +28,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+        
         //create a new instance of clsOrderProcessing
         clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+        //capture the TotalAmount
+        decimal TotalAmount;
+        if
+            (!string.IsNullOrWhiteSpace(txtTotalAmount.Text))
+        {
+            TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
+        }
+        else
+        {
+            TotalAmount= -0.01m;
+        }
+        
         //capture the customerID
         string CustomerId = txtCustomerId.Text;
         //capture the staff Id
         string StaffId = txtStaffId.Text;
         //capture the order date
         string OrderDate = txtOrderDate.Text;
-        //capture the total amount
-        decimal TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
         //capture the shipping status
         string ShippingStatus = chkShippingStatus.Text;
         //capture the shipping Address
