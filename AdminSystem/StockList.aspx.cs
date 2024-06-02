@@ -61,4 +61,25 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please selected a record from the list to edit";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //ariable vto store the pk value of the record to be delted
+        Int32 ProductId;
+        //if a record has been selected from the list
+        if (lstStockList.SelectedIndex != -1)
+        {
+            //get the pk value of the record delete
+            ProductId = Convert.ToInt32(lstStockList.SelectedValue);
+            //store the data in the sess object
+            Session["ProductId"] = ProductId;
+            Response.Redirect("StockConfirmDelete.aspx");
+        }
+        else//if no reordc ha been slected
+        {
+            //display errpr msg
+            lblError.Text = "Please select a record from the list to delete";
+        }
+
+    }
 }

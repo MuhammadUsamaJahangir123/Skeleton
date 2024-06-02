@@ -77,6 +77,17 @@ namespace ClassLibrary
             DB.Execute("sproc_tbStock_Update");
         }
 
+        public void Delete()
+        {
+            //deletes the record pointed to by this stock
+            //connect to the db
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored proced
+            DB.AddParameter("@ProductId", mThisStock.ProductId);
+            //executev stored proced
+            DB.Execute("sproc_tbStock_Delete");
+        }
+
         public clsStock ThisStock
         {
             get

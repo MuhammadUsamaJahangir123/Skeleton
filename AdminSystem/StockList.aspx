@@ -14,6 +14,7 @@
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 10px; top: 323px; position: absolute; width: 59px" Text="Add" />
         <asp:Button ID="btnEdit" runat="server" height="26px" OnClick="btnEdit_Click" style="z-index: 1; left: 79px; top: 323px; position: absolute" Text="Edit" width="59px" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 17px; top: 371px; position: absolute; width: 61px"></asp:Label>
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; top: 322px; position: absolute; height: 26px; width: 59px; left: 150px; right: 949px" Text="Delete" />
     </form>
 </body>
 </html>
