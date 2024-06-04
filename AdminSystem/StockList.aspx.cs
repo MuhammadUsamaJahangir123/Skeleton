@@ -58,7 +58,7 @@ public partial class _1_List : System.Web.UI.Page
         }
         else //if no records found/seleted
         {
-            lblError.Text = "Please selected a record from the list to edit";
+            lblError.Text = "Please select a record from the list to edit";
         }
     }
 
@@ -80,6 +80,42 @@ public partial class _1_List : System.Web.UI.Page
             //display errpr msg
             lblError.Text = "Please select a record from the list to delete";
         }
+
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address object
+        clsStockCollection AnStock = new clsStockCollection();
+        //retrieve the value of productname from the presentation layer
+        AnStock.ReportByProductName(txtBoxEnter.Text);
+        //set the data source to the list of stocks in the collections
+        lstStockList.DataSource = AnStock.StockList;
+        //set the name of the PK
+        lstStockList.DataValueField = "ProductId";
+        //set the name of the field to display
+        lstStockList.DataTextField = "ProductName";
+        //bind the data to the list
+        lstStockList.DataBind();
+
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //reatce an instance of the stock object
+        clsStockCollection AnStock = new clsStockCollection();
+        //set an empty string
+        AnStock.ReportByProductName("");
+        //clear any existing filter to tidy up the iterface
+        txtBoxEnter.Text = "";
+        //set the data source to the list of stocks in the collection
+        lstStockList.DataSource= AnStock.StockList;
+        //set the name of the PK
+        lstStockList.DataValueField = "ProductId";
+        //set the name of the field to display
+        lstStockList.DataTextField = "ProductName";
+        //bind tge data to the list
+        lstStockList.DataBind();
 
     }
 }
