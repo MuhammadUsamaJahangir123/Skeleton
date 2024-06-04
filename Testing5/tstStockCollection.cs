@@ -186,6 +186,60 @@ namespace Testing5
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+        [TestMethod]
+        public void ReportByProductNameMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create an instance of the filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a balank string - shld return all records
+            FilteredStocks.ReportByProductName("");
+            //test 2 c that the 2 results r the same
+            Assert.AreEqual(AllStocks.Count, FilteredStocks.Count);
+        }
+        [TestMethod]
+        public void ReportByProductNameNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a ProductName that doesnt exist
+            FilteredStocks.ReportByProductName("xxxxxy");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStocks.Count);   
+        }
+        [TestMethod]
+        public void ReportByProductNameTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a productname that doesnt exist
+            FilteredStocks.ReportByProductName("xxxxxx");
+            //check that the correct number of records are found
+            if (FilteredStocks.Count == 2)
+            {
+                //check to see that the first record is 2031
+                if (FilteredStocks.StockList[0].ProductId != 2031)
+                {
+                    OK = false;
+                }
+                //check 2c if the first record is 2032
+                if (FilteredStocks.StockList[1].ProductId != 2032)
+                {
+                    OK = false;
+                }
+
+
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there r no records
+            Assert.IsTrue(OK);
+        }
 
 
     }
