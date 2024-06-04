@@ -4,18 +4,24 @@ namespace ClassLibrary
 {
     public class clsSupplierUser
     {
+        //private data member for the user id property
         private int mUserID;
-        private string mUserName;   
+        //private data member for the user name property
+        private string mUserName;
+        //private data member for the password property
         private string mPassword;
+        //private data member for the department property
         private string mDepartment;
         public int UserID
         {
             get
             {
+                //return the private data
                 return mUserID;
             }
             set
             {
+                //set the private data
                 mUserID = value;
             }
         }
@@ -23,10 +29,12 @@ namespace ClassLibrary
         {
             get
             {
+                //return the private data
                 return mUserName;
             }
             set
             {
+                //set the private data
                 mUserName = value;
             }
         }
@@ -34,10 +42,12 @@ namespace ClassLibrary
         {
             get
             {
+                //return the private data
                 return mPassword;
             }
             set
             {
+                //set the private data
                 mPassword = value;
             }
         }
@@ -45,10 +55,12 @@ namespace ClassLibrary
         {
             get
             {
+                //return the private data
                 return mDepartment;
             }
             set
             {
+                //set the private data
                 mDepartment = value;
             }
         }
@@ -76,6 +88,7 @@ namespace ClassLibrary
             }
             else
             {
+                //return false if it doesnt work
                 return false;
             }
         }

@@ -16,7 +16,7 @@
         <div>
         </div>
         <asp:Label ID="lblSupplierId" runat="server" height="19px" style="z-index: 1; left: 10px; top: 38px; position: absolute" Text="Supplier Id" width="140px"></asp:Label>
-        <asp:TextBox ID="txtSupplierId" runat="server" height="22px" style="z-index: 1; left: 180px; top: 40px; position: absolute; margin-top: 0px" width="128px"></asp:TextBox>
+        <asp:TextBox ID="txtSupplierId" runat="server" height="22px" style="z-index: 1; left: 180px; top: 40px; position: absolute; margin-top: 0px" width="128px" OnTextChanged="txtSupplierId_TextChanged1"></asp:TextBox>
         <br />
         <asp:CheckBox ID="chkActivity" runat="server" style="z-index: 1; left: 22px; top: 263px; position: absolute" Text="Active" />
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click1" style="z-index: 1; left: 381px; top: 46px; position: absolute" Text="Find" />
@@ -37,6 +37,7 @@
         <asp:Label ID="lblSupplierPostCode" runat="server" height="19px" style="z-index: 1; left: 10px; top: 188px; position: absolute" Text="Supplier Postcode" width="140px"></asp:Label>
         <asp:Label ID="lblSupplierShippingTme" runat="server" style="z-index: 1; left: 10px; top: 227px; position: absolute" Text="Supplier Shipping Time"></asp:Label>
         <asp:TextBox ID="txtSupplierShippingTime" runat="server" height="22px" OnTextChanged="txtSupplierShippingTime_TextChanged" style="z-index: 1; left: 180px; top: 222px; position: absolute; margin-bottom: 0px" width="128px"></asp:TextBox>
+        <asp:Button ID="btnReturnMenu" runat="server" OnClick="btnReturnMenu_Click" style="z-index: 1; left: 384px; top: 316px; position: absolute" Text="Return to Main Menu" />
     </form>
 </body>
 </html>

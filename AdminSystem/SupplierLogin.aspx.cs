@@ -45,7 +45,7 @@ public partial class SupplierLogin : System.Web.UI.Page
         else if (Found == true)
         {
             //redirect to the list page
-            Response.Redirect("StaffList.aspx");
+            Response.Redirect("SupplierList.aspx");
         }
         else if (Found == false)
         {

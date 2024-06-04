@@ -25,8 +25,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsSupplier ASupplier = new clsSupplier();
-        //capture supplier Id
-        string supplierId = txtSupplierId.Text;
+       
         //capture name
         string supplierName = txtSupplierName.Text; 
         //capture date
@@ -50,8 +49,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ASupplier.SupplierId = SupplierId;
             //capture Name
             ASupplier.SupplierName = txtSupplierName.Text;
-            //capture supplier Id
-            ASupplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
+           
             //Capture the date they joined
             ASupplier.SupplierDate = Convert.ToDateTime(supplierDate);
             //Capture their contact details
@@ -171,6 +169,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtSupplierContact.Text = Supplier.ThisSupplier.SupplierContact.ToString();
         txtSupplierDAte.Text = Supplier.ThisSupplier.SupplierDate.ToString();
         chkActivity.Checked = Supplier.ThisSupplier.SupplierActivity;
+
+    }
+
+    protected void btnReturnMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void txtSupplierId_TextChanged1(object sender, EventArgs e)
+    {
 
     }
 }

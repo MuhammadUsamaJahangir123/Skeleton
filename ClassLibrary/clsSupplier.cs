@@ -23,10 +23,12 @@ namespace ClassLibrary
         {
             get
             {
+                //This line of code sends data out of the property
                 return mSupplierActivity;
             }
             set
             {
+                //This line of code allows data into the property
                 mSupplierActivity = value;
             }
         }
@@ -35,10 +37,12 @@ namespace ClassLibrary
         {
             get
             {
+                //This line of code sends data out of the property
                 return mSupplierDate;
             }
             set
             {
+                //This line of code allows data into the property
                 mSupplierDate = value;
             }
         }
@@ -59,10 +63,12 @@ namespace ClassLibrary
         {
             get
             {
+                //This line of code sends data out of the property
                 return mSupplierContact;
             }
             set
             {
+                //This line of code allows data into the property
                 mSupplierContact = value;
             }
         }
@@ -70,10 +76,12 @@ namespace ClassLibrary
         {
             get
             {
+                //This line of code sends data out of the property
                 return mSupplierName;
             }
             set
             {
+                //This line of code allows data into the property
                 mSupplierName = value;
             }
         }
@@ -82,10 +90,12 @@ namespace ClassLibrary
         {
             get
             {
+                //This line of code sends data out of the property
                 return mSupplierShippingTime;
             }
             set
             {
+                //This line of code allows data into the property
                 mSupplierShippingTime = value;
             }
         }
@@ -94,6 +104,7 @@ namespace ClassLibrary
         {
             get
             {
+                //This line of code sends data out of the property
                 return mSupplierPostCode;
             }
             set

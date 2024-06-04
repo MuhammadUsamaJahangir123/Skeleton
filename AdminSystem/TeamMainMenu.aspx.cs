@@ -29,4 +29,11 @@ public partial class TeamMainMenu : System.Web.UI.Page
         //redirect to main menu
         Response.Redirect("OrderProcessingLogin.aspx");
     }
+
+
+    protected void btnSupplier_Click(object sender, EventArgs e)
+    {
+        //redirect the user to supplier login page
+        Response.Redirect("SupplierLogin.aspx");
+    }
 }
