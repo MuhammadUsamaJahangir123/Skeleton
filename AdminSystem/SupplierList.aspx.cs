@@ -14,6 +14,9 @@ public partial class _1_List : System.Web.UI.Page
         {
             DisplaySupplier();
         }
+        clsSupplierUser AnUser = new clsSupplierUser();
+        AnUser = (clsSupplierUser)Session["AnUser"];
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
     void DisplaySupplier()
     {
@@ -84,5 +87,11 @@ public partial class _1_List : System.Web.UI.Page
         lstSupplierList.DataTextField = "SupplierPostCode";
         lstSupplierList.DataBind();
 
+    }
+
+    protected void btnReturnMenu_Click(object sender, EventArgs e)
+    {
+        //return to main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

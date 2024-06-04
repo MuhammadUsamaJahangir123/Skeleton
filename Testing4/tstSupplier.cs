@@ -22,66 +22,95 @@ namespace Testing4
         [TestMethod]
         public void InstanceOK()
         {
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
+            //test to see that it exists 
             Assert.IsNotNull(ASupplier);
         }
 
         [TestMethod]
         public void SupplierActivityOK()
         {
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
+            //create some test data to assign to the property
             Boolean TestData = true;
+            //assign the data to the property
             ASupplier.SupplierActivity = TestData;
+            //test to see if the two values are the same
             Assert.AreEqual(ASupplier.SupplierActivity, TestData);
         }
         [TestMethod]
         public void SupplierDatePropertyOK()
         {
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
+            //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
+            //assign the data to the property
             ASupplier.SupplierDate = TestData;
+            //test to see if the two values are the same
             Assert.AreEqual(ASupplier.SupplierDate, TestData);
         }
         [TestMethod]
         public void SupplierIdPropertyOK()
         {
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
+            //create some test data to assign to the property
             Int32 TestData = 5;
+            //assign the data to the property
             ASupplier.SupplierId = TestData;
+            //test to see if the two values are the same
             Assert.AreEqual(ASupplier.SupplierId, TestData);
         }
         [TestMethod]
         public void SupplierContactPropertyOK()
         {
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
+            //create some test data to assign to the property
             String TestData = "gurjot@gmail.com";
+            //assign the data to the property
             ASupplier.SupplierContact = TestData;
+            //test to see if the two values are the same
             Assert.AreEqual(ASupplier.SupplierContact, TestData);
         }
 
         [TestMethod]
         public void SupplierNamePropertyOK()
         {
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
             String TestData = "Gurj";
+            //assign the data to the property
             ASupplier.SupplierName = TestData;
+            //test to see if the two values are the same
             Assert.AreEqual(ASupplier.SupplierName, TestData);
         }
 
         [TestMethod]
         public void SupplierShippingTimeOK()
         {
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
+            //create some test data to assign to the property
             Int32 TestData = 5;
+            //assign the data to the property
             ASupplier.SupplierShippingTime = TestData;
+            //test to see if the two values are the same
             Assert.AreEqual(ASupplier.SupplierShippingTime, TestData);
         }
         [TestMethod]
         public void SupplierPostCodeOK()
         {
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
+            //create some test data to assign to the property
             String TestData = "LE5 5EL";
+            //assign the data to the property
             ASupplier.SupplierPostCode = TestData;
+            //test to see if the two values are the same
             Assert.AreEqual(ASupplier.SupplierPostCode, TestData);
         }
 
@@ -89,7 +118,7 @@ namespace Testing4
         [TestMethod]
         public void FindMethod()
         {
-            //create new instance
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
             //create boolean variable to store results of validation
             Boolean Found = false;
@@ -97,7 +126,7 @@ namespace Testing4
             Int32 SupplierId = 5;
             //invoke the method
             Found = ASupplier.Find(SupplierId);
-            //test to see if the results is true
+            //test to see if the record is found
             Assert.IsTrue(Found);
 
         }
@@ -114,7 +143,7 @@ namespace Testing4
             Int32 SupplierId = 5;
             //invoke the method
             Found = ASupplier.Find(SupplierId);
-            //check the Staff ID
+            //check the SupplierId
             if (ASupplier.SupplierId != 5)
             {
                 OK = false;
@@ -125,11 +154,17 @@ namespace Testing4
         [TestMethod]
         public void TestDateAddedFound()
         {
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
+            //create a Boolean variable to store the result of the search
             Boolean Found = true;
+            //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
+            //create some test data to use with the method
             Int32 SupplierId = 5;
+            //invoke the method
             Found = ASupplier.Find(SupplierId);
+            //check the SupplierDate
             if (ASupplier.SupplierDate != Convert.ToDateTime("02/03/2024"))
             {
                 OK = false;
@@ -150,7 +185,7 @@ namespace Testing4
             Int32 SupplierId = 5;
             //invoke the method
             Found = ASupplier.Find(SupplierId);
-            //check the supplier Id
+            //check the supplier Shipping Time
             if (ASupplier.SupplierShippingTime != 5)
             {
                 OK = false;
@@ -183,43 +218,64 @@ namespace Testing4
         [TestMethod]
         public void TestActive()
         {
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
+            //create a Boolean variable to store the result of the search
             Boolean Found = true;
+            //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
+            //create some test data to use with the method
             Int32 SupplierId = 5;
+            //invoke the method
             Found = ASupplier.Find(SupplierId);
+            //check the supplier activity
             if (ASupplier.SupplierActivity != true)
             {
                 OK = false;
             }
+            //test to see that the result is correct
             Assert.IsTrue(OK);
         }
         [TestMethod]
         public void TestContactInfo()
         {
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
+            //create a Boolean variable to store the result of the search
             Boolean Found = true;
+            //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
+            //create some test data to use with the method
             Int32 SupplierId = 5;
+            //invoke the method
             Found = ASupplier.Find(SupplierId);
+            //check the supplier contact
             if (ASupplier.SupplierContact != "Gurjot@gmail.com")
             {
                 OK = false;
             }
+            //test to see that the result is correct
             Assert.IsTrue(OK);
         }
         [TestMethod]
         public void TestSupplierName()
         {
+            //create an instance of the class we want to create
             clsSupplier ASupplier = new clsSupplier();
+            //create a Boolean variable to store the result of the search
             Boolean Found = true;
+            //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
+            //create some test data to use with the method
             Int32 SupplierId = 5;
+            //invoke the method
             Found = ASupplier.Find(SupplierId);
+            //check the supplier name
             if (ASupplier.SupplierName != "Gurj")
             {
                 OK = false;
             }
+            //test to see that the result is correct
             Assert.IsTrue(OK);
         }
         [TestMethod]
@@ -231,6 +287,7 @@ namespace Testing4
             String Error = "";
             //invoke the method
             Error = ASupplier.Valid(supplierName, supplierDate, supplierContact,  supplierPostCode);
+            //test to see that the result is correct
             Assert.AreEqual(Error, "");
 
         }
