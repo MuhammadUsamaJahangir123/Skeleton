@@ -45,18 +45,7 @@ namespace Testing2
             //Test to see that the two values are the same
             Assert.AreEqual(AllCustomers.CustomerList, TestList);
         }
-        /** [TestMethod]
-         public void CountPropertyOK()
-         {
-             //create am instance of the class we want to create
-             clsCustomerCollection AllCustomers = new clsCustomerCollection();
-             //create some test data to assign to property
-             Int32 SomeCount = 2;
-             //assign the data to the property
-             AllCustomers.Count = SomeCount;
-             //test to see that the two values are the same 
-             Assert.AreEqual(AllCustomers.Count, SomeCount);
-         } **/
+        //Properties
         [TestMethod]
         public void ThisCustomerPropertyOK()
         {
@@ -77,6 +66,7 @@ namespace Testing2
             //Test to see that the two values are the same
             Assert.AreEqual(AllCustomers.ThisCustomer, TestCustomer);
         }
+        //list method
         [TestMethod]
         public void ListAndCountOK()
         {
@@ -105,14 +95,7 @@ namespace Testing2
             Assert.AreEqual(AllCustomers.Count, TestList.Count);
 
         }
-        /**  [TestMethod]
-          public void TwoRecordPresent()
-          {
-              //create an instance of the class we want to create
-              clsCustomerCollection AllCustomer = new clsCustomerCollection();
-              //test to see that the two values are the same
-              Assert.AreEqual(AllCustomer.Count, 2);
-          } **/
+        //Add method
         [TestMethod]
         public void AddMethodOK()
         {
@@ -180,6 +163,7 @@ namespace Testing2
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
 
         }
+        //delete method
         [TestMethod]
         public void DeleteMethodOK()
         {
@@ -208,6 +192,7 @@ namespace Testing2
             //Test to see that the record was not found
             Assert.IsFalse(Found);
         }
+        //report by first name method or filter method
         [TestMethod]
         public void ReportByfirstNameMethodOK()
         {

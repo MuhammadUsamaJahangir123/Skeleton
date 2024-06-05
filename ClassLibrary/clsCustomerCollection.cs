@@ -47,33 +47,6 @@ namespace ClassLibrary
 
             }
         }
-
-        /*** public clsCustomerCollection()
-         {   //create items of test data
-             clsCustomer TestItem = new clsCustomer();
-             //set its properties
-             TestItem.subscribe = true;
-             TestItem.email = "JonnyLenon@gmail.com";
-             TestItem.customerID = 1;
-             TestItem.firstName = "Jonny";
-             TestItem.lastName = "Lenon";
-             TestItem.joinedDate = DateTime.Now;
-             TestItem.PhoneNo = "07404535912";
-             //add the test item to the test list
-             mCustomerList.Add(TestItem);
-             //re initialise the object for some new data
-             TestItem = new clsCustomer();
-             //set its properties 
-             TestItem.subscribe = true;
-             TestItem.email = "JakeFade@gmail.com";
-             TestItem.customerID = 2;
-             TestItem.firstName = "Jake";
-             TestItem.lastName = "Fade";
-             TestItem.joinedDate = DateTime.Now;
-             TestItem.PhoneNo = "07303535912";
-             //add the item to the test list
-             mCustomerList.Add(TestItem);
-         }***/
         public clsCustomerCollection()
         {  
             //object for the data connection 
@@ -101,7 +74,7 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblCustomer_Insert");
 
         }
-
+        //update method
         public void Update()
         {
 
@@ -121,7 +94,7 @@ namespace ClassLibrary
             DB.Execute("sproc_tbCustomer_Update");
 
         }
-
+        //delete method
         public void Delete()
         {
             //deletes the record pointed to by ThisCustomer
@@ -132,7 +105,7 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tbCustomer_Delete");
         }
-
+        //populate method
         public void ReportByfirstName(string firstName)
         {
             //filters the records based on full or partial post code
