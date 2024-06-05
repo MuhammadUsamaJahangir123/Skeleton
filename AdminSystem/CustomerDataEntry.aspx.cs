@@ -20,6 +20,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
             { //update the list box
                 DisplayCustomers();
             }
+            else
+            { 
+                //disables the find method and button when adding a cusomter
+                txtCustomerID.Text = customerID.ToString();
+                txtCustomerID.Enabled = false;
+                btnFind.Enabled = false;
+            }
         }
     }
     void DisplayCustomers()
