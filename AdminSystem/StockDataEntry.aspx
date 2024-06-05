@@ -24,12 +24,13 @@
         <asp:CheckBox ID="chkRestock" runat="server" style="z-index: 1; left: 419px; top: 179px; position: absolute; height: 26px" Text="Restock" width="76px" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 15px; top: 464px; position: absolute; right: 1405px"></asp:Label>
         <asp:Button ID="btnOK" runat="server" height="27px" OnClick="btnOK_Click" style="z-index: 1; top: 506px; position: absolute; width: 70px; left: 15px;" Text="OK" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 506px; position: absolute; width: 70px; height: 27px; right: 1156px" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 506px; position: absolute; width: 70px; height: 27px; right: 1135px" Text="Cancel" />
         <p>
             &nbsp;</p>
         <p>
             &nbsp;</p>
         <asp:Button ID="btnFind" runat="server" height="22px" OnClick="btnFind_Click" style="z-index: 1; left: 201px; top: 335px; position: absolute; width: 137px" Text="Find" />
+        <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="z-index: 1; left: 199px; top: 506px; position: absolute; height: 27px; width: 183px" Text="Return to Main Menu" />
     </form>
 </body>
 </html>

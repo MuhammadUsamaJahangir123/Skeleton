@@ -17,6 +17,12 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayStocks();
         }
+        //reacte new instance of cls stock user
+        clsStockUser AnUser = new clsStockUser();
+        //get data from sesh obj
+        AnUser = (clsStockUser)Session["AnUser"];
+        //display the user nsme
+        Response.Write("Logged in as: " + AnUser.UserName);
 
     }
     void DisplayStocks()
@@ -117,5 +123,10 @@ public partial class _1_List : System.Web.UI.Page
         //bind tge data to the list
         lstStockList.DataBind();
 
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
