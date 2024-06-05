@@ -109,7 +109,7 @@ namespace Testing2
             Assert.AreEqual(AnCustomer.PhoneNo, TestData);
 
         }
-        //Practical 9 Find and Valid Methods
+        // Find and Valid Methods
         /***************Find Method Test ****************/
 
         [TestMethod]
