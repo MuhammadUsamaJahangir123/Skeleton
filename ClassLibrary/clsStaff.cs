@@ -154,10 +154,10 @@ namespace ClassLibrary
                 Error = Error + "The first name may not be blank: ";
             }
             //if the firstName is long
-            if (firstName.Length > 16)
+            if (firstName.Length > 50)
             {
                 //record the error
-                Error = Error + "The first name must be less than 16 characters: ";
+                Error = Error + "The first name must be less than 50 characters: ";
             }
 
            
@@ -198,10 +198,10 @@ namespace ClassLibrary
                 Error = Error + "The last name may not be blank: ";
             }
             //if the LASTNAME is long
-            if (lastName.Length > 16)
+            if (lastName.Length > 50)
             {
                 //record the error
-                Error = Error + "The last name must be less than 16 characters: ";
+                Error = Error + "The last name must be less than 50 characters: ";
             }
 
             //if the EMAIL is blank
@@ -211,10 +211,10 @@ namespace ClassLibrary
                 Error = Error + "The email may not be blank: ";
             }
             //if the EMAIL is long
-            if (email.Length > 25)
+            if (email.Length > 50)
             {
                 //record the error
-                Error = Error + "The email must be less than 25 characters: ";
+                Error = Error + "The email must be less than 50 characters: ";
             }
 
 
@@ -225,10 +225,10 @@ namespace ClassLibrary
                 Error = Error + "The phone number may not be blank: ";
             }
             //if the PHONE NO is long
-            if (phoneNo.Length > 16)
+            if (phoneNo.Length > 50)
             {
                 //record the error
-                Error = Error + "The phone number must be less than 25 characters: ";
+                Error = Error + "The phone number must be less than 50 characters: ";
             }
 
 

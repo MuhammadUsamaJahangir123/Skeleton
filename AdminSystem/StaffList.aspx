@@ -11,7 +11,7 @@
         }
     </style>
 </head>
-<body style="height: 582px">
+<body style="height: 326px">
     <form id="form1" runat="server">
         <div>
         </div>
@@ -25,7 +25,7 @@
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 31px; top: 483px; position: absolute"></asp:Label>
                 
         </p>
-        <asp:Label ID="lblInputEmail" runat="server" style="z-index: 1; left: 20px; top: 362px; position: absolute; height: 19px; right: 1403px;" Text="Enter an Email"></asp:Label>
+        <asp:Label ID="lblInputEmail" runat="server" style="z-index: 1; left: 20px; top: 362px; position: absolute; height: 19px; right: 1005px;" Text="Enter an Email"></asp:Label>
         <asp:TextBox ID="txtEnterEmail" runat="server" style="z-index: 1; left: 186px; top: 359px; position: absolute"></asp:TextBox>
         <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 16px; top: 403px; position: absolute" Text="Apply Filter" />
         <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 150px; top: 403px; position: absolute" Text="Clear Filter" />
