@@ -36,4 +36,10 @@ public partial class TeamMainMenu : System.Web.UI.Page
         //redirect the user to supplier login page
         Response.Redirect("SupplierLogin.aspx");
     }
+
+    protected void btnStock_Click(object sender, EventArgs e)
+    {
+        //redirect user to the stock login  pGE
+        Response.Redirect("StockLogin.aspx");
+    }
 }
