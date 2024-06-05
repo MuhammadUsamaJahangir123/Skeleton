@@ -401,7 +401,7 @@ namespace Testing1
             String Error = "";
             //create some test data to pass to the method
             string FirstName = ""; //this should be ok
-            FirstName = FirstName.PadRight(17, 'a');
+            FirstName = FirstName.PadRight(51, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, Email, PhoneNo, JoinedDate);
             //test to see that the result is correct
@@ -653,7 +653,7 @@ namespace Testing1
             String Error = "";
             //create some test data to pass to the method
             string LastName = ""; //this should be ok
-            LastName = LastName.PadRight(17, 'a');
+            LastName = LastName.PadRight(51, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, Email, PhoneNo, JoinedDate);
             //test to see that the result is correct
@@ -767,7 +767,7 @@ namespace Testing1
             String Error = "";
             //create some test data to pass to the method
             string Email = ""; //this should be ok
-            Email = Email.PadRight(26, 'a');
+            Email = Email.PadRight(51, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, Email, PhoneNo, JoinedDate);
             //test to see that the result is correct
@@ -881,7 +881,7 @@ namespace Testing1
             String Error = "";
             //create some test data to pass to the method
             string PhoneNo = ""; //this should be ok
-            PhoneNo = PhoneNo.PadRight(17, 'a');
+            PhoneNo = PhoneNo.PadRight(51, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, Email, PhoneNo, JoinedDate);
             //test to see that the result is correct

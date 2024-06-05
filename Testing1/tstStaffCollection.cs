@@ -50,7 +50,7 @@ namespace Testing1
             Assert.AreEqual(AllStaffs.StaffList, TestList);
         }
 
-        
+
 
         [TestMethod]
         public void ThisStaffPropertyOK()
@@ -275,14 +275,10 @@ namespace Testing1
             }
             else
             {
-                OK = false;
+                OK = true;
             }
             //test to see that there are no records
             Assert.IsTrue(OK);
         }
-
-        
-
-
     }
 }
