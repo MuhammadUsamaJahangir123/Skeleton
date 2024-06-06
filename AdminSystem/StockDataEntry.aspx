@@ -23,14 +23,18 @@
         <asp:CheckBox ID="chkIsAvailable" runat="server" style="z-index: 1; left: 419px; top: 133px; position: absolute; height: 26px" Text="Available" />
         <asp:CheckBox ID="chkRestock" runat="server" style="z-index: 1; left: 419px; top: 179px; position: absolute; height: 26px" Text="Restock" width="76px" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 15px; top: 464px; position: absolute; right: 1405px"></asp:Label>
-        <asp:Button ID="btnOK" runat="server" height="27px" OnClick="btnOK_Click" style="z-index: 1; top: 506px; position: absolute; width: 70px; left: 15px;" Text="OK" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 506px; position: absolute; width: 70px; height: 27px; right: 1135px" Text="Cancel" />
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; top: 430px; position: absolute; width: 162px; left: 425px; height: 35px;" Text="OK" />
         <p>
             &nbsp;</p>
         <p>
             &nbsp;</p>
         <asp:Button ID="btnFind" runat="server" height="22px" OnClick="btnFind_Click" style="z-index: 1; left: 201px; top: 335px; position: absolute; width: 137px" Text="Find" />
-        <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="z-index: 1; left: 199px; top: 506px; position: absolute; height: 27px; width: 183px" Text="Return to Main Menu" />
+        <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="z-index: 1; left: 427px; top: 626px; position: absolute; height: 39px; width: 195px" Text="Return to Main Menu" />
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Button ID="btnCancel" runat="server" height="35px" OnClick="btnCancel_Click" style="z-index: 1; left: 432px; top: 509px; position: absolute" Text="Cancel" width="162px" />
+        </p>
     </form>
 </body>
 </html>
